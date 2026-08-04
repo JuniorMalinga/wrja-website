@@ -1,18 +1,47 @@
+import { useState } from "react";
+import PageHeader from "../components/PageHeader";
+import NewsHeroSlider from "../components/NewsHeroSlider";
+import NewsSidebar from "../components/NewsSidebar";
 import NewsPost from "../components/NewsPost";
+import Pagination from "../components/Pagination";
+import newsPosts from "../data/newsPosts";
 
-const placeholderPosts = [
-  { id: 1, title: "Placeholder headline about a recent grading", date: "January 11, 2026", body: "Placeholder body text." },
-  { id: 2, title: "Placeholder headline about a provincial result", date: "December 7, 2025", body: "Placeholder body text." },
-  { id: 3, title: "Placeholder headline about the club dojo", date: "November 6, 2025", body: "Placeholder body text." },
-];
+const POSTS_PER_PAGE = 2;
 
 export default function NewsPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(newsPosts.length / POSTS_PER_PAGE);
+
+  const visiblePosts = newsPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <div className="simple-page">
-      <h1>News &amp; updates</h1>
-      {placeholderPosts.map((post) => (
-        <NewsPost key={post.id} post={post} />
-      ))}
+    <div className="news-page">
+      <PageHeader title="News" />
+      <NewsHeroSlider />
+
+      <section className="news-page-layout">
+        <NewsSidebar />
+
+        <div className="news-post-list">
+          {visiblePosts.map((post) => (
+            <NewsPost key={post.id} post={post} />
+          ))}
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </div>
+      </section>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 import SiteFooter from "./components/SiteFooter";
 import ProgramDetailPage from "./pages/ProgramDetailPage";
+import NewsDetailPage from "./pages/NewsDetailPage";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -31,6 +32,8 @@ export default function App() {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/programs" element={<ProgramsPage />} />
         <Route path="/programs/:slug" element={<ProgramDetailPage />} /> 
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/news/:id" element={<NewsDetailPage />} />
       </Routes>
       <SiteFooter />
     </BrowserRouter>
