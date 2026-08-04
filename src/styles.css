@@ -300,7 +300,7 @@ section {
   margin-top: 16px;
 }
 
-/* ---------- Programs ---------- */
+/* ---------- Programs (home page cards) ---------- */
 .programs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -763,57 +763,6 @@ section {
   min-height: 50vh;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 900px) {
-  section {
-    padding: 60px 24px;
-  }
-
-  .nav-links,
-  .nav-auth {
-    display: none;
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  .nav-links-open {
-    display: flex;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    background: var(--bg-dark);
-    padding: 24px;
-  }
-
-  .programs-grid,
-  .features-grid,
-  .trainers-grid,
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about {
-    grid-template-columns: 1fr;
-  }
-
-  .free-trial-form {
-    grid-template-columns: 1fr;
-  }
-
-  .free-trial-form button {
-    grid-column: 1;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
 /* ---------- Page header (used by inner pages) ---------- */
 .page-header {
   position: relative;
@@ -931,4 +880,173 @@ section {
   left: 8px;
   font-size: 11px;
   font-weight: 400;
+}
+
+/* ---------- Programs listing page ---------- */
+.programs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.program-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.program-row-reverse {
+  direction: rtl;
+}
+
+.program-row-reverse > * {
+  direction: ltr;
+}
+
+.program-row-image-link {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.program-row-image-link img {
+  transition: transform 0.5s var(--ease);
+}
+
+.program-row-image-link:hover img {
+  transform: scale(1.06);
+}
+
+.program-row-heading {
+  display: inline-block;
+}
+
+.program-row-second-word {
+  color: var(--text-dark);
+  transition: color 0.3s var(--ease);
+}
+
+.program-row-heading:hover .program-row-second-word {
+  color: var(--accent);
+}
+
+.program-row-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.program-row-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: var(--text-dark-muted);
+  opacity: 0;
+  transform: translateX(-12px);
+  animation: listItemIn 0.5s var(--ease) forwards;
+  animation-play-state: paused;
+}
+
+.reveal-visible .program-row-list li {
+  animation-play-state: running;
+}
+
+.program-row-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@keyframes listItemIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ---------- Program detail page ---------- */
+.program-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.program-detail-image-wrap img {
+  border-radius: var(--radius);
+}
+
+.btn-outline-dark {
+  display: inline-flex;
+  margin-top: 16px;
+  border: 1px solid var(--text-dark-muted);
+  color: var(--text-dark);
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  transition: all 0.25s var(--ease);
+}
+
+.btn-outline-dark:hover {
+  background: var(--text-dark);
+  color: var(--text-light);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  section {
+    padding: 60px 24px;
+  }
+
+  .nav-links,
+  .nav-auth {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links-open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--bg-dark);
+    padding: 24px;
+  }
+
+  .programs-grid,
+  .features-grid,
+  .trainers-grid,
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about,
+  .program-row,
+  .program-row-reverse,
+  .program-detail {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+
+  .free-trial-form {
+    grid-template-columns: 1fr;
+  }
+
+  .free-trial-form button {
+    grid-column: 1;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
 }
