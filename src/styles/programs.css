@@ -1,0 +1,70 @@
+/* ---------- Programs listing page ---------- */
+.programs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.program-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.program-row-reverse {
+  direction: rtl;
+}
+
+.program-row-reverse > * {
+  direction: ltr;
+}
+
+.program-row-image-link {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.program-row-image-link img {
+  transition: transform 0.5s var(--ease);
+}
+
+.program-row-image-link:hover img {
+  transform: scale(1.06);
+}
+
+.program-row-heading {
+  display: inline-block;
+}
+
+.program-row-second-word {
+  color: var(--text-dark);
+  transition: color 0.3s var(--ease);
+}
+
+.program-row-heading:hover .program-row-second-word {
+  color: var(--accent);
+}
+
+/* ---------- Program detail page ---------- */
+.program-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.program-detail-image-wrap img {
+  border-radius: var(--radius);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .program-row,
+  .program-row-reverse,
+  .program-detail {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+}

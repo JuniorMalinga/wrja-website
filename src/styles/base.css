@@ -1,0 +1,397 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --bg-dark: #161616;
+  --bg-dark-2: #1f1f1f;
+  --bg-light: #ffffff;
+  --bg-light-2: #f4f4f4;
+  --text-light: #ffffff;
+  --text-muted: #b8b8b8;
+  --text-dark: #1a1a1a;
+  --text-dark-muted: #555555;
+  --accent: #c9a227;
+  --accent-dark: #8a6e1a;
+  --border: rgba(255, 255, 255, 0.08);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-dark);
+  background: var(--bg-light);
+}
+
+h1, h2, h3 {
+  margin: 0 0 0.5em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+p {
+  margin: 0 0 1em;
+  line-height: 1.7;
+  color: var(--text-dark-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+section {
+  padding: 80px 60px;
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-lg {
+  padding: 16px 32px;
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--text-dark);
+}
+
+.btn-accent:hover {
+  background: var(--accent-dark);
+}
+
+.btn-outline {
+  border-color: var(--text-light);
+  color: var(--text-light);
+}
+
+.btn-outline:hover {
+  background: var(--text-light);
+  color: var(--text-dark);
+}
+
+.btn-outline-dark {
+  display: inline-flex;
+  margin-top: 16px;
+  border: 1px solid var(--text-dark-muted);
+  color: var(--text-dark);
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  transition: all 0.25s var(--ease);
+}
+
+.btn-outline-dark:hover {
+  background: var(--text-dark);
+  color: var(--text-light);
+}
+
+.btn-ghost {
+  color: var(--text-light);
+}
+
+.btn-ghost:hover {
+  color: var(--accent);
+}
+
+/* ---------- Scroll reveal animation ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Shared bullet-list stagger animation (used by Programs, About mission list) */
+.program-row-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.program-row-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: var(--text-dark-muted);
+  opacity: 0;
+  transform: translateX(-12px);
+  animation: listItemIn 0.5s var(--ease) forwards;
+  animation-play-state: paused;
+}
+
+.reveal-visible .program-row-list li {
+  animation-play-state: running;
+}
+
+.program-row-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@keyframes listItemIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ---------- Navigation bar ---------- */
+.navigation-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-dark);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  gap: 24px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo-image {
+  height: 56px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: color 0.2s var(--ease);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--text-light);
+}
+
+@media (max-width: 900px) {
+  section {
+    padding: 60px 24px;
+  }
+
+  .nav-links,
+  .nav-auth {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links-open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--bg-dark);
+    padding: 24px;
+  }
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  padding: 60px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr;
+  gap: 48px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.footer-logo-image {
+  height: 64px;
+  width: auto;
+  margin-bottom: 16px;
+}
+
+.footer-about p {
+  color: var(--text-muted);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-socials a {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.footer-contacts h3,
+.footer-gallery h3 {
+  color: var(--text-light);
+}
+
+.footer-contacts p {
+  color: var(--text-muted);
+}
+
+.footer-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.footer-gallery-grid img {
+  border-radius: 4px;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+  padding-top: 24px;
+}
+
+.footer-bottom p {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Page header (used by every inner page) ---------- */
+.page-header {
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.page-header-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.page-header-content {
+  position: relative;
+  z-index: 2;
+  color: var(--text-light);
+}
+
+.page-header-content h1 {
+  font-size: 40px;
+}
+
+.page-header-breadcrumb {
+  color: var(--text-muted);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.page-header-breadcrumb a {
+  color: var(--text-light);
+}
+
+.page-header-breadcrumb .current {
+  color: var(--accent);
+}
+
+/* ---------- Simple placeholder pages ---------- */
+.simple-page {
+  padding: 100px 60px;
+  min-height: 50vh;
+}
