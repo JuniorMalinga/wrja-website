@@ -446,7 +446,8 @@ section {
 
 .trainers-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+  justify-content: center;
   gap: 24px;
 }
 
@@ -1423,3 +1424,5 @@ section {
     font-size: 28px;
   }
 }
+
+

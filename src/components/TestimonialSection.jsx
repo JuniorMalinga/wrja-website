@@ -3,13 +3,13 @@ import Reveal from "./Reveal";
 
 const testimonials = [
   {
-    name: "Parent placeholder",
+    name: "Parent",
     role: "Parent",
     quote:
       "Placeholder testimonial text describing a positive experience with the club, its coaches, and the community.",
   },
   {
-    name: "Athlete placeholder",
+    name: "Athlete",
     role: "Member",
     quote:
       "Placeholder testimonial text describing progress made through training and support from the coaching team.",

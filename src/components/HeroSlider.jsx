@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 
+import judo1 from "../assets/images/Landing/Landing 1.jpg";
+import judo2 from "../assets/images/Landing/Landing 2.jpg";
+import judo3 from "../assets/images/Landing/Landing 3.jpg";
 const slides = [
   {
-    image: "https://placehold.co/1600x900/1a1a1a/555555?text=Judo+Training+Placeholder+1",
+    image: judo1,
     number: "1",
   },
   {
-    image: "https://placehold.co/1600x900/1a1a1a/555555?text=Judo+Training+Placeholder+2",
+    image: judo2,
     number: "2",
   },
   {
-    image: "https://placehold.co/1600x900/1a1a1a/555555?text=Judo+Training+Placeholder+3",
+    image: judo3,
     number: "3",
   },
 ];

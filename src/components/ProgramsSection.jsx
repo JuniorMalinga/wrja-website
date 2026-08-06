@@ -1,22 +1,25 @@
 import Reveal from "./Reveal";
+import kidsJudo from "../assets/images/Kids/image 91.jpg";
+import adultJudo from "../assets/images/Adult/Buff Guy.jpg";
+import womensJudo from "../assets/images/Women/image 1.jpg";
 
 const programs = [
   {
     title: "Kids judo",
-    image: "https://placehold.co/700x500/222222/666666?text=Kids+Judo+Placeholder",
+    image: kidsJudo,
     description:
       "Fundamentals of balance, falling safely, and respect for the dojo, taught through age-appropriate drills and games.",
     featured: true,
   },
   {
     title: "Adult judo",
-    image: "https://placehold.co/700x500/222222/666666?text=Adult+Judo+Placeholder",
+    image: adultJudo,
     description:
       "Technique-focused sessions covering throws, groundwork, and competition preparation for all grades.",
   },
   {
     title: "Women's judo",
-    image: "https://placehold.co/700x500/222222/666666?text=Women's+Judo+Placeholder",
+    image: womensJudo,
     description:
       "A dedicated training group building confidence and skill in a supportive, welcoming environment.",
   },

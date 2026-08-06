@@ -1,20 +1,77 @@
+import PageHeader from "../components/PageHeader";
+import AboutSection from "../components/AboutSection";
+import ProgramsSection from "../components/ProgramsSection";
+import FeaturesSection from "../components/FeaturesSection";
+import TrainersSection from "../components/TrainersSection";
+import NewsSection from "../components/NewsSection";
+import Reveal from "../components/Reveal";
+import InstructorRow from "../components/InstructorRow";
+import ClubLinks from "../components/ClubLinks";
+import instructors from "../data/instructors";
+
+const missionPoints = [
+  "Promote and develop the sport of judo throughout the West Rand.",
+  "Provide safe, professional, and inclusive training environments.",
+  "Support the growth and development of athletes, coaches, referees, and officials.",
+  "Encourage the values of respect, discipline, integrity, perseverance, and self-improvement.",
+  "Create opportunities for participation at recreational, developmental, provincial, national, and international levels.",
+  "Build a strong judo community that positively impacts individuals, families, and society.",
+];
+
 export default function AboutPage() {
   return (
     <div className="about-page">
-      <h1>About Us</h1>
-      <section className="wrja-history">
-        <h2>History</h2>
+      <PageHeader title="About" />
+
+      {/* Same section blocks as the Home page, in the same order as the
+          reference layout, just with WRJA's real content instead of
+          the boxing-demo placeholders. */}
+      <AboutSection />
+      <ProgramsSection />
+      <FeaturesSection />
+      <TrainersSection />
+      <NewsSection />
+
+      {/* Deeper real content that didn't fit the reference sections above —
+          full mission list, full instructor bios, and affiliated club
+          links, sourced from WRJA_WEB_DETAILS.docx. */}
+      <section className="about-mission">
+        <Reveal className="about-mission-header">
+          <h2>Our mission</h2>
+          <p>
+            Our mission is to develop confident, disciplined, and respectful
+            individuals through the practice of judo. We are committed to providing
+            high-quality coaching, fostering sportsmanship, promoting inclusivity,
+            and creating opportunities for athletes to reach their full potential
+            both on and off the mat.
+          </p>
+        </Reveal>
+
+        <Reveal delay={100}>
+          <ul className="program-row-list about-mission-list">
+            {missionPoints.map((point, index) => (
+              <li key={index} style={{ transitionDelay: `${index * 80}ms` }}>{point}</li>
+            ))}
+          </ul>
+        </Reveal>
       </section>
-      <section className="wrja-mission">
-        <h2>Mission Statement</h2>
+
+      <section className="instructors-page-section">
+        <Reveal className="instructors-header">
+          <h2>Our instructors &amp; facilitators</h2>
+          <p>
+            The West Rand Judo Association is proud to be supported by highly
+            qualified and experienced instructors who are passionate about
+            developing athletes and building a strong judo community.
+          </p>
+        </Reveal>
+
+        {instructors.map((instructor, index) => (
+          <InstructorRow key={instructor.slug} instructor={instructor} reverse={index % 2 === 1} />
+        ))}
       </section>
-      <section className="wrja-committee">
-        <h2>Committee Members</h2>
-      </section>
-      <section className="wrja-affiliations">
-        <h2>Affiliations</h2>
-        <p>SASCOC, Judo South Africa</p>
-      </section>
+
+      <ClubLinks />
     </div>
   );
 }
