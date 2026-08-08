@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import pageHeader from "../assets/images/background/1125448-3840x2160-desktop-4k-combat-sports-background.jpg";
 
 // Reusable page banner: dark background, title, and a breadcrumb.
 // crumbs is an optional list of intermediate steps between Home and the
@@ -10,7 +11,7 @@ export default function PageHeader({ title, crumbs = [] }) {
       className="page-header"
       style={{
         backgroundImage:
-          "url(https://placehold.co/1600x400/1a1a1a/555555?text=Page+Header+Placeholder)",
+          `url(${pageHeader})`,
       }}
     >
       <div className="page-header-overlay" />

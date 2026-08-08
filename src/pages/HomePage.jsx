@@ -1,4 +1,4 @@
-import HeroSlider from "../components/HeroSlider";
+import HomePageImageSlider from "../components/HomePageImageSlider";
 import ProgramsSection from "../components/ProgramsSection";
 import AboutSection from "../components/AboutSection";
 import FeaturesSection from "../components/FeaturesSection";
@@ -11,7 +11,7 @@ import LocationSection from "../components/LocationSection";
 export default function HomePage() {
   return (
     <div className="home-page">
-      <HeroSlider />
+      <HomePageImageSlider />
       <ProgramsSection />
       <AboutSection />
       <FeaturesSection />

@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import trialbackground from "../assets/images/background/1125387-2500x1406-desktop-hd-combat-sports-background.jpg";
 
 // Form is presentational only for now — no submit handling wired up yet.
 export default function FreeTrialSection() {
@@ -8,7 +9,7 @@ export default function FreeTrialSection() {
       className="free-trial"
       style={{
         backgroundImage:
-          "url(https://placehold.co/1600x900/2a2a2a/777777?text=Free+Trial+Background+Placeholder)",
+          `url(${trialbackground})`,
       }}
     >
       <div className="free-trial-overlay" />

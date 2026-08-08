@@ -1,5 +1,5 @@
-/* ---------- Hero ---------- */
-.hero {
+/* ---------- Home Page Image Slider ---------- */
+.image-slider {
   position: relative;
   min-height: 90vh;
   display: flex;
@@ -8,12 +8,12 @@
   background: var(--bg-dark);
 }
 
-.hero-slides {
+.image-slides {
   position: absolute;
   inset: 0;
 }
 
-.hero-slide {
+.image-slide {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -22,40 +22,40 @@
   transition: opacity 1.4s var(--ease);
 }
 
-.hero-slide-active {
+.image-slide-active {
   opacity: 1;
 }
 
-.hero-overlay {
+.image-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.35) 60%);
 }
 
-.hero-content {
+.image-content {
   position: relative;
   z-index: 2;
   padding: 0 60px;
   max-width: 720px;
 }
 
-.hero-title {
+.image-title {
   color: var(--text-light);
   font-size: 48px;
   line-height: 1.15;
 }
 
-.hero-highlight {
+.image-highlight {
   color: var(--accent);
 }
 
-.hero-numbers {
+.image-numbers {
   display: flex;
   gap: 12px;
   margin: 20px 0;
 }
 
-.hero-number {
+.image-number {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -66,19 +66,19 @@
   transition: all 0.3s var(--ease);
 }
 
-.hero-number-active {
+.image-number-active {
   background: var(--accent);
   color: var(--text-dark);
   border-color: var(--accent);
 }
 
-.hero-text {
+.image-text {
   color: var(--text-muted);
   font-size: 16px;
   max-width: 520px;
 }
 
-.hero-actions {
+.image-actions {
   display: flex;
   gap: 16px;
   margin-top: 16px;
@@ -308,7 +308,6 @@
   border-color: var(--accent);
   color: var(--text-dark);
 }
-
 /* ---------- News (home page grid) ---------- */
 .news {
   background: var(--bg-light-2);
@@ -324,7 +323,12 @@
   gap: 24px;
 }
 
-.news-image {
+/* Only affects images inside the home page news cards.
+   This does NOT affect the News Image Slider from news.css (NB: gets confusing). */
+.news-grid .news-image {
+  width: 100%;
+  height: 300px; /*adjusts the height of the card in the home page */
+  object-fit: cover;
   border-radius: var(--radius);
   margin-bottom: 16px;
   transition: transform 0.4s var(--ease);

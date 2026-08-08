@@ -18,7 +18,7 @@ const slides = [
   },
 ];
 
-export default function HeroSlider() {
+export default function imageSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -29,28 +29,28 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <section className="hero">
-      <div className="hero-slides">
+    <section className="image-slider">
+      <div className="image-slides">
         {slides.map((slide, index) => (
           <div
             key={slide.number}
-            className={`hero-slide ${index === activeIndex ? "hero-slide-active" : ""}`}
+            className={`image-slide ${index === activeIndex ? "image-slide-active" : ""}`}
             style={{ backgroundImage: `url(${slide.image})` }}
           />
         ))}
       </div>
-      <div className="hero-overlay" />
+      <div className="image-overlay" />
 
-      <div className="hero-content">
-        <h1 className="hero-title">
-          Welcome to <span className="hero-highlight">West Rand Judo</span> Association
+      <div className="image-content">
+        <h1 className="image-title">
+          Welcome to <span className="image-highlight">West Rand Judo</span> Association
         </h1>
 
-        <div className="hero-numbers">
+        <div className="image-numbers">
           {slides.map((slide, index) => (
             <button
               key={slide.number}
-              className={`hero-number ${index === activeIndex ? "hero-number-active" : ""}`}
+              className={`image-number ${index === activeIndex ? "image-number-active" : ""}`}
               onClick={() => setActiveIndex(index)}
               aria-label={`Show slide ${slide.number}`}
             >
@@ -59,12 +59,12 @@ export default function HeroSlider() {
           ))}
         </div>
 
-        <p className="hero-text">
+        <p className="image-text">
           Building discipline, respect, and excellence through judo for
           athletes of all ages across the West Rand community.
         </p>
 
-        <div className="hero-actions">
+        <div className="image-actions">
           <a href="#free-trial" className="btn btn-accent btn-lg">Book a session</a>
           <a href="#about" className="btn btn-outline btn-lg">Learn more</a>
         </div>

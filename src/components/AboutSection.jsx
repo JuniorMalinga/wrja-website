@@ -1,11 +1,12 @@
 import Reveal from "./Reveal";
+import WRJACommittee from "../assets/images/team/image 79.jpg";
 
 export default function AboutSection() {
   return (
     <section id="about" className="about">
       <Reveal className="about-image-wrap">
         <img
-          src="https://placehold.co/900x1100/f2f2f2/999999?text=Athlete+Placeholder"
+          src={WRJACommittee}
           alt="Placeholder of a judo athlete"
           className="about-image"
         />
@@ -26,9 +27,10 @@ export default function AboutSection() {
             <p className="about-name">Committee chairperson</p>
             <p className="about-role">WRJA Committee</p>
           </div>
-          <span className="about-signature-mark">Signature</span>
+          <span className="about-signature-mark">Signature</span> 
         </div>
       </Reveal>
     </section>
   );
 }
+

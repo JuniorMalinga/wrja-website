@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 // Real location and contact details from WRJA_WEB_DETAILS.docx.
 const locations = [
   {
@@ -27,11 +29,11 @@ const locations = [
 
 export default function ContactInfo() {
   return (
-    <div className="contact-info">
+    <Reveal delay={150} className="contact-info">
       <h2>Contact info</h2>
 
-      {locations.map((location) => (
-        <div key={location.name} className="contact-location">
+      {locations.map((location, index) => (
+        <Reveal key={location.name} delay={200 + index * 120} className="contact-location">
           <h3>{location.name}</h3>
           <p className="contact-location-address">&#128205; {location.address}</p>
           <p className="contact-location-note">{location.note}</p>
@@ -43,8 +45,8 @@ export default function ContactInfo() {
               <span>&#9993; {contact.email}</span>
             </div>
           ))}
-        </div>
+        </Reveal>
       ))}
-    </div>
+    </Reveal>
   );
 }

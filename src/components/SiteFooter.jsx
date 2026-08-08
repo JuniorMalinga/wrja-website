@@ -1,3 +1,5 @@
+import wrjaLogo from "../assets/images/Logo/wrja-logo.png";
+
 const galleryPlaceholders = Array.from({ length: 8 }, (_, index) => index + 1);
 
 export default function SiteFooter() {
@@ -6,11 +8,9 @@ export default function SiteFooter() {
       <div className="footer-grid">
         <div className="footer-about">
           <div className="footer-logo">
-            <div className="nav-logo-mark">WRJA</div>
-            <div className="nav-logo-text">
-              <span className="nav-logo-title">West Rand</span>
-              <span className="nav-logo-subtitle">Judo Association</span>
-            </div>
+            <span className="nav-logo-badge">
+              <img src={wrjaLogo} alt="West Rand Judo Association" className="footer-logo-image" />
+            </span>
           </div>
           <p>
             West Rand Judo Association has offered structured, safe judo
@@ -18,18 +18,15 @@ export default function SiteFooter() {
             and grades.
           </p>
           <div className="footer-socials">
-            <a href="#" aria-label="Facebook">FB</a>
-            <a href="#" aria-label="Twitter">TW</a>
-            <a href="#" aria-label="Instagram">IG</a>
+            <a href="https://www.facebook.com/share/1DgzXXuN9M/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
           </div>
         </div>
 
         <div className="footer-contacts">
           <h3>Contacts</h3>
-          <p>Placeholder address line</p>
-          <p>Phone: +27 00 000 0000</p>
-          <p>Address: Placeholder street, Johannesburg</p>
-          <p>Email: info@example.com</p>
+          <p>West Rand Judo Association NPC</p>
+          <p>Office (NPC only): 3 Octavia, 49 Otto Street, Krugersdorp North</p>
+          <p>For training enquiries, contact Golden Score Judo or KJK Judo Club directly.</p>
         </div>
 
         <div className="footer-gallery">

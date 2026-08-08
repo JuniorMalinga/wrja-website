@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 
-// Slide 1 uses a video background (drop an actual file at
-// public/videos/news-hero-placeholder.mp4 later — poster shows until it
-// loads, and browsers that block autoplay will just show the poster).
-// Slides 2 and 3 are static images, matching the reference where only
-// the first slide is a video/gif.
+import Newsvideoslide from "../assets/images/background/4932049_Taekwondo_Sport_1280x720.mp4";
+import Newsimageslide2 from "../assets/images/background/sports-judo-belt-737250.jpeg";
+import Newsimageslide3 from "../assets/images/background/karsten-winegeart-0Wra5YYVQJE-unsplash.jpg";
+
+
+// Slide 1 uses a video background.
+// Slides 2 and 3 use static images.
 const slides = [
   {
     number: "01",
     type: "video",
-    poster: "https://placehold.co/1600x900/1a1a1a/555555?text=Video+Poster+Placeholder",
-    videoSrc: "/videos/news-hero-placeholder.mp4",
+    poster:
+      "https://placehold.co/1600x900/1a1a1a/555555?text=Video+Poster+Placeholder",
+    videoSrc: Newsvideoslide,
     heading: (
       <>
         <span className="text-accent">Judo</span> and{" "}
@@ -19,10 +22,11 @@ const slides = [
       </>
     ),
   },
+
   {
     number: "02",
     type: "image",
-    image: "https://placehold.co/1600x900/1a1a1a/555555?text=News+Hero+Placeholder+2",
+    image: Newsimageslide2,
     heading: (
       <>
         <span className="text-accent">Choose</span> your
@@ -31,10 +35,11 @@ const slides = [
       </>
     ),
   },
+
   {
     number: "03",
     type: "image",
-    image: "https://placehold.co/1600x900/1a1a1a/555555?text=News+Hero+Placeholder+3",
+    image: Newsimageslide3,
     heading: (
       <>
         Build your body
@@ -45,28 +50,34 @@ const slides = [
   },
 ];
 
-export default function NewsHeroSlider() {
+export default function NewsImageSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    
+    const duration = slides[activeIndex].type === "video" ? 6000 : 6000; //set duration based on slide type (video or image) currently 9sec for images
+
+    const timer = setTimeout(() => {
       setActiveIndex((current) => (current + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
+    }, duration);
+
+    return () => clearTimeout(timer);
+  }, [activeIndex]);
 
   const activeSlide = slides[activeIndex];
 
   return (
-    <section className="news-hero">
+    <section className="news-image">
       {slides.map((slide, index) => (
         <div
           key={slide.number}
-          className={`news-hero-slide ${index === activeIndex ? "news-hero-slide-active" : ""}`}
+          className={`news-image-slide ${
+            index === activeIndex ? "news-image-slide-active" : ""
+          }`}
         >
           {slide.type === "video" ? (
             <video
-              className="news-hero-media"
+              className="news-image-media"
               poster={slide.poster}
               autoPlay
               muted
@@ -77,23 +88,27 @@ export default function NewsHeroSlider() {
             </video>
           ) : (
             <div
-              className="news-hero-media"
+              className="news-image-media"
               style={{ backgroundImage: `url(${slide.image})` }}
             />
           )}
         </div>
       ))}
 
-      <div className="news-hero-overlay" />
+      <div className="news-image-overlay" />
 
-      <div className="news-hero-content">
+      <div className="news-image-content">
         <h2>{activeSlide.heading}</h2>
 
-        <div className="news-hero-numbers">
+        <div className="news-image-numbers">
           {slides.map((slide, index) => (
             <button
               key={slide.number}
-              className={`news-hero-number ${index === activeIndex ? "news-hero-number-active" : ""}`}
+              className={`news-image-number ${
+                index === activeIndex
+                  ? "news-image-number-active"
+                  : ""
+              }`}
               onClick={() => setActiveIndex(index)}
               aria-label={`Show slide ${slide.number}`}
             >

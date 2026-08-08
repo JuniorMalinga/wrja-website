@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
-import NewsHeroSlider from "../components/NewsHeroSlider";
+import NewsHeroSlider from "../components/NewsImageSlider";
 import NewsSidebar from "../components/NewsSidebar";
 import NewsPost from "../components/NewsPost";
 import Pagination from "../components/Pagination";

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Reveal from "./Reveal";
 
 const locations = [
   {
@@ -27,6 +28,9 @@ export default function ContactMap() {
   const mapRef = useRef(null);
   const didInitializeRef = useRef(false);
   const [mapError, setMapError] = useState(null);
+  // Map starts inert (no scroll/drag capture) so it never hijacks page
+  // scroll — the person has to click it once to switch it on.
+  const [isActive, setIsActive] = useState(false);
 
   const token = import.meta.env.VITE_MAPBOX_TOKEN;
   const tokenLooksValid = isLikelyValidToken(token);
@@ -77,10 +81,31 @@ export default function ContactMap() {
     mapRef.current = map;
   }, [token, tokenLooksValid]);
 
+  const handleActivate = () => {
+    setIsActive(true);
+    mapRef.current?.resize();
+  };
+
   return (
-    <section className="contact-map">
+    <Reveal className="contact-map">
       {tokenLooksValid && !mapError ? (
-        <div ref={mapContainerRef} className="contact-map-canvas" />
+        <div className="contact-map-wrapper">
+          <div
+            ref={mapContainerRef}
+            className={`contact-map-canvas ${isActive ? "contact-map-canvas-active" : ""}`}
+          />
+          {!isActive && (
+            <button
+              type="button"
+              className="contact-map-activate"
+              onClick={handleActivate}
+              aria-label="Click to interact with the map"
+            >
+              <span className="contact-map-activate-icon">&#128205;</span>
+              <span>Click to interact with the map</span>
+            </button>
+          )}
+        </div>
       ) : (
         <div className="contact-map-placeholder">
           <p>
@@ -101,6 +126,6 @@ export default function ContactMap() {
           </p>
         </div>
       )}
-    </section>
+    </Reveal>
   );
 }

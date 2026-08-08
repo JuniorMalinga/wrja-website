@@ -196,8 +196,16 @@ section {
   gap: 12px;
 }
 
+.nav-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-light);
+  padding: 6px 14px;
+  border-radius: var(--radius);
+}
+
 .nav-logo-image {
-  height: 56px;
+  height: 44px;
   width: auto;
 }
 
@@ -289,9 +297,8 @@ section {
 }
 
 .footer-logo-image {
-  height: 64px;
+  height: 56px;
   width: auto;
-  margin-bottom: 16px;
 }
 
 .footer-about p {
@@ -350,7 +357,7 @@ section {
 /* ---------- Page header (used by every inner page) ---------- */
 .page-header {
   position: relative;
-  min-height: 260px;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;

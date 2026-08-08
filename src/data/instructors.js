@@ -1,12 +1,14 @@
 // Real instructor bios supplied by the client (WRJA_WEB_DETAILS.docx).
 // Photos are still placeholders until real headshots are provided.
 //import images once provided add new folder in src/assets/images/instructors and import them here, then replace the placeholder image URLs with the imported images.
+import michelleDiamondImage from "../assets/images/instructors/sensei-michelle.jpg"; 
+import katjaBruwerImage from "../assets/images/instructors/sensei-katja.jpg";
 const instructors = [
   {
     slug: "katja-bruwer",
     name: "Sensei Katja Bruwer",
     role: "Director — KJK Judo Club",
-    image: "https://placehold.co/900x900/1a1a1a/666666?text=Sensei+Katja+Bruwer",
+    image: katjaBruwerImage,
     excerpt: "7th Dan, former SA national team captain, IJF-qualified coach.",
     social: [
       { label: "Facebook", url: "https://www.facebook.com/share/g/19C3Qq9izs/" },
@@ -22,7 +24,7 @@ const instructors = [
     slug: "michelle-diamond",
     name: "Sensei Michelle Diamond",
     role: "Founder & Director — Golden Score Judo",
-    image: "https://placehold.co/900x900/1a1a1a/666666?text=Sensei+Michelle+Diamond",
+    image: michelleDiamondImage,
     excerpt: "3rd Dan Black Belt, Sport Psychology graduate, founder of Golden Score Judo.",
     social: [
       { label: "Facebook", url: "https://www.facebook.com/share/1EZG7JfbEX/" },
