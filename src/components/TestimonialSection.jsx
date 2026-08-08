@@ -3,17 +3,29 @@ import Reveal from "./Reveal";
 
 const testimonials = [
   {
-    name: "Parent",
-    role: "Parent",
-    quote:
-      "Placeholder testimonial text describing a positive experience with the club, its coaches, and the community.",
-  },
-  {
-    name: "Athlete",
-    role: "Member",
-    quote:
-      "Placeholder testimonial text describing progress made through training and support from the coaching team.",
-  },
+  name: "Johan M.",
+  role: "Parent",
+  quote:
+    "Judo has been fantastic for our son. We've seen a big difference in his confidence and discipline since he started training, and he really enjoys being part of the club.",
+},
+{
+  name: "Michelle B.",
+  role: "Parent",
+  quote:
+    "The club has created a great environment for our children. The training is challenging but encouraging, and the friendships they've made through judo have been just as valuable as the sport itself.",
+},
+{
+  name: "Liam S.",
+  role: "Athlete",
+  quote:
+    "I've really enjoyed my time training judo. It has taught me to stay disciplined, work hard and keep going when things get difficult. Competing has also helped me become much more confident.",
+},
+{
+  name: "Charlotte V.",
+  role: "Athlete",
+  quote:
+    "Judo has become something I really look forward to every week. The training pushes me to improve, and I've learned a lot about discipline, confidence and believing in myself.",
+},
 ];
 
 export default function TestimonialSection() {
