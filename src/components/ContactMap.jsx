@@ -20,7 +20,10 @@ const locations = [
 ];
 
 function isLikelyValidToken(token) {
-  return typeof token === "string" && /^pk\.[A-Za-z0-9._-]{20,}$/.test(token.trim());
+  return (
+    typeof token === "string" &&
+    /^pk\.[A-Za-z0-9._-]{20,}$/.test(token.trim())
+  );
 }
 
 export default function ContactMap() {
@@ -28,6 +31,7 @@ export default function ContactMap() {
   const mapRef = useRef(null);
   const didInitializeRef = useRef(false);
   const [mapError, setMapError] = useState(null);
+
   // Map starts inert (no scroll/drag capture) so it never hijacks page
   // scroll — the person has to click it once to switch it on.
   const [isActive, setIsActive] = useState(false);
@@ -36,7 +40,12 @@ export default function ContactMap() {
   const tokenLooksValid = isLikelyValidToken(token);
 
   useEffect(() => {
-    if (!tokenLooksValid || !mapContainerRef.current || !window.mapboxgl || didInitializeRef.current) {
+    if (
+      !tokenLooksValid ||
+      !mapContainerRef.current ||
+      !window.mapboxgl ||
+      didInitializeRef.current
+    ) {
       return;
     }
 
@@ -54,7 +63,9 @@ export default function ContactMap() {
 
     map.on("error", (event) => {
       console.error("Mapbox error:", event?.error || event);
-      setMapError("The map failed to load — check that your Mapbox token is valid.");
+      setMapError(
+        "The map failed to load — check that your Mapbox token is valid."
+      );
     });
 
     map.on("load", () => {
@@ -62,10 +73,22 @@ export default function ContactMap() {
 
       const bounds = new mapboxgl.LngLatBounds();
 
+      // FIX: Replaced the original locations.forEach block.
+      // Each marker now has Google Maps and Waze navigation links.
       locations.forEach((location) => {
-        const popup = new mapboxgl.Popup({ offset: 24 }).setHTML(
-          `<strong>${location.name}</strong><br />${location.address}`
-        );
+        const [lng, lat] = location.coordinates;
+
+        const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+        const wazeUrl = `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
+
+        const popup = new mapboxgl.Popup({ offset: 24 }).setHTML(`
+          <strong>${location.name}</strong><br />
+          ${location.address}
+          <div class="map-popup-links">
+            <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">Google Maps</a>
+            <a href="${wazeUrl}" target="_blank" rel="noopener noreferrer">Waze</a>
+          </div>
+        `);
 
         new mapboxgl.Marker({ color: "#c9a227" })
           .setLngLat(location.coordinates)
@@ -92,8 +115,11 @@ export default function ContactMap() {
         <div className="contact-map-wrapper">
           <div
             ref={mapContainerRef}
-            className={`contact-map-canvas ${isActive ? "contact-map-canvas-active" : ""}`}
+            className={`contact-map-canvas ${
+              isActive ? "contact-map-canvas-active" : ""
+            }`}
           />
+
           {!isActive && (
             <button
               type="button"
@@ -116,7 +142,11 @@ export default function ContactMap() {
                 Map not shown — add a real Mapbox public token as
                 <code> VITE_MAPBOX_TOKEN</code> in <code>.env.local</code> to
                 enable the live map. Get a free token at{" "}
-                <a href="https://account.mapbox.com/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://account.mapbox.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   account.mapbox.com
                 </a>
                 . It should start with <code>pk.</code> and be a long string —

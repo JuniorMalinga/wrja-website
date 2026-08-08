@@ -402,3 +402,29 @@ section {
   padding: 100px 60px;
   min-height: 50vh;
 }
+
+/* ---------- Mapbox popup directions links (shared by Contact + Location maps) ---------- */
+.mapboxgl-popup-content {
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  font-family: inherit;
+}
+
+.map-popup-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.map-popup-links a {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+.map-popup-links a:hover {
+  color: var(--accent);
+}

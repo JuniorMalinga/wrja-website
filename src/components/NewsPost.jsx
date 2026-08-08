@@ -26,10 +26,18 @@ export default function NewsPost({ post }) {
 
       <p>{post.excerpt}</p>
 
-      <div className="news-post-reactions">
-        <span>&hearts; {post.likes}</span>
-        <span>&#128065; {post.views}</span>
-        <span>&#128172; {post.comments}</span>
+      <div className="news-post-footer">
+        <div className="news-post-reactions">
+          <span>&hearts; {post.likes}</span>
+          <span>&#128065; {post.views}</span>
+          <span>&#128172; {post.comments}</span>
+        </div>
+
+        {post.url && (
+          <a href={post.url} target="_blank" rel="noopener noreferrer" className="news-post-source-link">
+            Read on {post.source} &rarr;
+          </a>
+        )}
       </div>
     </Reveal>
   );
