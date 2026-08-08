@@ -1,0 +1,133 @@
+/* ---------- Contact layout ---------- */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ---------- Contact form ---------- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-light-2);
+  border-radius: var(--radius);
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.25s var(--ease);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.contact-form button {
+  align-self: flex-start;
+}
+
+/* ---------- Contact info ---------- */
+.contact-info h2 {
+  margin-bottom: 24px;
+}
+
+.contact-location {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.contact-location:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.contact-location h3 {
+  font-size: 17px;
+}
+
+.contact-location-address {
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.contact-location-note {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-dark-muted);
+  margin-bottom: 12px;
+}
+
+.contact-location-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 14px;
+  color: var(--text-dark-muted);
+  margin-bottom: 8px;
+}
+
+.contact-location-detail-label {
+  font-weight: 700;
+  color: var(--text-dark);
+  min-width: 110px;
+}
+
+/* ---------- Contact map (Mapbox) ---------- */
+.contact-map {
+  padding: 0;
+}
+
+.contact-map-canvas {
+  width: 100%;
+  height: 480px;
+}
+
+.contact-map-placeholder {
+  height: 300px;
+  background: var(--bg-dark);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.contact-map-placeholder a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.contact-map-placeholder code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-row {
+    grid-template-columns: 1fr;
+  }
+}
