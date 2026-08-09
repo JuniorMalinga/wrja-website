@@ -7,6 +7,8 @@ import "./styles/events.css";
 import "./styles/news.css";
 import "./styles/about.css";
 import "./styles/contact.css";
+import "./styles/auth.css";
+import "./styles/gallery.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
