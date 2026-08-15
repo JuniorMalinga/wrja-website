@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # West Rand Judo Association Website
 
 React project scaffold for the WRJA website (INSY7315 WIL module).
@@ -44,3 +45,6 @@ Full, direct, descriptive names throughout — no abbreviations. Pages end in `P
 
 - Firebase (or another backend) for auth, athlete records, events, news, gallery
 - Wiring up the login/sign-up forms, the "book a free trial" form, and the location/map section
+=======
+# insy7315-g1-2026-insy7315-project-2026-st10440180
+>>>>>>> bc7d577600bc08daeec430325c83aba3e5c1747e
