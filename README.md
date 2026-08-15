@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # West Rand Judo Association Website
 
 React project scaffold for the WRJA website (INSY7315 WIL module).
