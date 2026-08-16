@@ -250,14 +250,14 @@
 
 /* ---------- Booking card interaction ---------- */
 
-/* FIX: Smooth movement and glow when hovering */
+/* Smooth movement and glow when hovering */
 .booking-card {
   transition:
     transform 0.6s var(--ease),
     box-shadow 0.6s var(--ease);
 }
 
-/* FIX: Subtle floating effect on hover */
+/* Subtle floating effect on hover */
 .booking-card:hover {
   transform: translateY(-6px);
 
@@ -267,7 +267,7 @@
     0 12px 35px rgba(201, 162, 39, 0.18);
 }
 
-/* FIX: Strong glow once every required field is completed */
+/* Strong glow once every required field is completed */
 .booking-card-complete {
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.35),
@@ -275,7 +275,7 @@
     0 12px 45px rgba(201, 162, 39, 0.22);
 }
 
-/* FIX: Stronger effect when the completed card is hovered */
+/* Stronger effect when the completed card is hovered */
 .booking-card-complete:hover {
   transform: translateY(-8px);
 

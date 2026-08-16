@@ -11,7 +11,7 @@ export default function BookingPage() {
   const [selectedProgramSlug, setSelectedProgramSlug] = useState("");
   const [activeInstructorIndex, setActiveInstructorIndex] = useState(0);
 
-  // FIX: Track the required booking fields so the card can glow
+  // Track the required booking fields so the card can glow
   // when the form is completely filled in.
   const [formData, setFormData] = useState({
     fullName: "",
@@ -52,7 +52,7 @@ export default function BookingPage() {
 
   const activeInstructor = assignedInstructors[activeInstructorIndex];
 
-  // FIX: Check all required fields.
+  // Check all required fields.
   // Notes are intentionally excluded because they are optional.
   const isFormComplete =
     selectedProgramSlug &&
@@ -63,7 +63,7 @@ export default function BookingPage() {
     formData.preferredDate &&
     formData.preferredTime;
 
-  // FIX: Reusable handler for the required form fields.
+  // Reusable handler for the required form fields.
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
