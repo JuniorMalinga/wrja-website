@@ -11,6 +11,17 @@ export default function BookingPage() {
   const [selectedProgramSlug, setSelectedProgramSlug] = useState("");
   const [activeInstructorIndex, setActiveInstructorIndex] = useState(0);
 
+  // FIX: Track the required booking fields so the card can glow
+  // when the form is completely filled in.
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    paymentMethod: "",
+    preferredDate: "",
+    preferredTime: "",
+  });
+
   const selectedProgram = programs.find(
     (program) => program.slug === selectedProgramSlug
   );
@@ -23,12 +34,10 @@ export default function BookingPage() {
         .filter(Boolean)
     : [];
 
-  // Reset back to the first instructor whenever the program changes.
   useEffect(() => {
     setActiveInstructorIndex(0);
   }, [selectedProgramSlug]);
 
-  // Auto-cycle through instructors only when there's more than one.
   useEffect(() => {
     if (assignedInstructors.length < 2) return;
 
@@ -43,21 +52,38 @@ export default function BookingPage() {
 
   const activeInstructor = assignedInstructors[activeInstructorIndex];
 
+  // FIX: Check all required fields.
+  // Notes are intentionally excluded because they are optional.
+  const isFormComplete =
+    selectedProgramSlug &&
+    formData.fullName.trim() &&
+    formData.email.trim() &&
+    formData.phone.trim() &&
+    formData.paymentMethod &&
+    formData.preferredDate &&
+    formData.preferredTime;
+
+  // FIX: Reusable handler for the required form fields.
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="booking-page">
       <PageHeader title="Book a Session" />
 
       <section className="booking-section">
-
-        {/* FIX: Reveal wraps the card instead of being the card.
-            This prevents the background image from being lost if
-            Reveal does not forward the style prop. */}
         <Reveal>
           <div
-            className="booking-card"
+            className={`booking-card ${
+              isFormComplete ? "booking-card-complete" : ""
+            }`}
             style={{
-              // FIX: Apply the imported Vite image directly to the
-              // normal div that has the booking-card class.
               backgroundImage: `url("${trialbackground}")`,
             }}
           >
@@ -77,9 +103,9 @@ export default function BookingPage() {
 
                 <select
                   value={selectedProgramSlug}
-                  onChange={(event) =>
-                    setSelectedProgramSlug(event.target.value)
-                  }
+                  onChange={(event) => {
+                    setSelectedProgramSlug(event.target.value);
+                  }}
                   required
                 >
                   <option value="" disabled>
@@ -150,6 +176,9 @@ export default function BookingPage() {
 
                   <input
                     type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
                     placeholder="Your full name"
                     required
                   />
@@ -160,6 +189,9 @@ export default function BookingPage() {
 
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="you@example.com"
                     required
                   />
@@ -172,6 +204,9 @@ export default function BookingPage() {
 
                   <input
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     placeholder="Your phone number"
                     required
                   />
@@ -180,7 +215,12 @@ export default function BookingPage() {
                 <label>
                   Payment method
 
-                  <select defaultValue="" required>
+                  <select
+                    name="paymentMethod"
+                    value={formData.paymentMethod}
+                    onChange={handleInputChange}
+                    required
+                  >
                     <option value="" disabled>
                       Select a payment method
                     </option>
@@ -198,13 +238,25 @@ export default function BookingPage() {
                 <label>
                   Preferred date
 
-                  <input type="date" />
+                  <input
+                    type="date"
+                    name="preferredDate"
+                    value={formData.preferredDate}
+                    onChange={handleInputChange}
+                    required
+                  />
                 </label>
 
                 <label>
                   Preferred time
 
-                  <input type="time" />
+                  <input
+                    type="time"
+                    name="preferredTime"
+                    value={formData.preferredTime}
+                    onChange={handleInputChange}
+                    required
+                  />
                 </label>
               </div>
 
