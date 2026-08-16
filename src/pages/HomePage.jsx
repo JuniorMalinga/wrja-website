@@ -5,7 +5,6 @@ import FeaturesSection from "../components/FeaturesSection";
 import TrainersSection from "../components/TrainersSection";
 import NewsSection from "../components/NewsSection";
 import TestimonialSection from "../components/TestimonialSection";
-import FreeTrialSection from "../components/FreeTrialSection";
 import LocationSection from "../components/LocationSection";
 
 export default function HomePage() {
@@ -18,7 +17,6 @@ export default function HomePage() {
       <TrainersSection />
       <NewsSection />
       <TestimonialSection />
-      <FreeTrialSection />
       <LocationSection />
     </div>
   );

@@ -23,6 +23,7 @@ export default function NavigationBar() {
           <Link to="/programs">Programs</Link>
           <Link to="/news">News</Link>
           <Link to="/gallery">Gallery</Link>
+          <Link to="/booking">Book</Link>
           <Link to="/contact">Contact</Link>
         </nav>
 

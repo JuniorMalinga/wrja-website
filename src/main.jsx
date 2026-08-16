@@ -9,6 +9,7 @@ import "./styles/about.css";
 import "./styles/contact.css";
 import "./styles/auth.css";
 import "./styles/gallery.css";
+import "./styles/booking.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

@@ -11,6 +11,7 @@ const programs = [
     slug: "kids-judo",
     highlightWord: "Kids",
     restWord: "Judo",
+     instructorSlugs: ["katja-bruwer", "michelle-diamond"],
     image: kidsJudo,
     description:
       "Our kids' program introduces judo through structured, age-appropriate coaching in a safe and supportive environment. Young athletes learn the fundamentals of balance, falling safely, and basic technique, while building discipline, respect, and confidence both on and off the mat.",
@@ -20,6 +21,7 @@ const programs = [
     slug: "adult-judo",
     highlightWord: "Adult",
     restWord: "Judo",
+    instructorSlugs: ["john-doe", "jane-smith"],
     image: adultJudo,
     description:
       "Our adult program is built for athletes at every level, from complete beginners to competitive judoka. Training covers standing technique (tachi-waza), groundwork (ne-waza), and competition-focused conditioning under experienced, qualified coaches.",
@@ -29,6 +31,7 @@ const programs = [
     slug: "womens-judo",
     highlightWord: "Women's",
     restWord: "Judo",
+    instructorSlugs: ["sarah-johnson", "lisa-williams"],
     image: womensJudo,
     description:
       "Our women's program offers a dedicated, welcoming space to train, compete, and grow in the sport. Sessions focus on technical development and physical fitness alongside the confidence and self-defense skills judo is known for, all within a supportive club community.",
