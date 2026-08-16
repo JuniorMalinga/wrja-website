@@ -1,24 +1,17 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; 
 
 import judo1 from "../assets/images/Landing/Landing 1.jpg";
 import judo2 from "../assets/images/Landing/Landing 2.jpg";
 import judo3 from "../assets/images/Landing/Landing 3.jpg";
+
 const slides = [
-  {
-    image: judo1,
-    number: "1",
-  },
-  {
-    image: judo2,
-    number: "2",
-  },
-  {
-    image: judo3,
-    number: "3",
-  },
+  { image: judo1, number: "1" },
+  { image: judo2, number: "2" },
+  { image: judo3, number: "3" },
 ];
 
-export default function imageSlider() {
+export default function ImageSlider() { 
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -65,8 +58,12 @@ export default function imageSlider() {
         </p>
 
         <div className="image-actions">
-          <a href="#free-trial" className="btn btn-accent btn-lg">Book a session</a>
-          <a href="#about" className="btn btn-outline btn-lg">Learn more</a>
+          <Link to="/booking" className="btn btn-accent btn-lg">
+            Book a session
+          </Link>
+          <Link to="/about" className="btn btn-outline btn-lg">
+            Learn more
+          </Link>
         </div>
       </div>
     </section>
