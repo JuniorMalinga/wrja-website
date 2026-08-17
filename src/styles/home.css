@@ -99,16 +99,15 @@
   background-position: center;
   overflow: hidden;
   transition: transform 0.4s var(--ease);
+  display: block;
+  text-decoration: none;
 }
 
 .program-card:hover {
   transform: translateY(-6px);
 }
 
-.program-card-featured {
-  outline: 3px solid var(--accent);
-  outline-offset: 6px;
-}
+
 
 .program-card-overlay {
   position: absolute;
