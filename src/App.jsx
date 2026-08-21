@@ -16,6 +16,8 @@ import SignupPage from "./pages/SignupPage";
 import AdminPage from "./pages/AdminPage";
 import BookingPage from "./pages/BookingPage";
 
+import ChatWidget from "./components/ChatWidget";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -38,6 +40,7 @@ export default function App() {
         <Route path="/booking" element={<BookingPage />} />
       </Routes>
       <SiteFooter />
+      <ChatWidget />
     </BrowserRouter>
   );
 }
