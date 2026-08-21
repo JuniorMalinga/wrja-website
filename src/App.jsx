@@ -38,6 +38,7 @@ export default function App() {
         <Route path="/news" element={<NewsPage />} />
         <Route path="/news/:id" element={<NewsDetailPage />} />
         <Route path="/booking" element={<BookingPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
       <SiteFooter />
       <ChatWidget />

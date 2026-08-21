@@ -11,6 +11,7 @@ import "./styles/auth.css";
 import "./styles/gallery.css";
 import "./styles/booking.css";
 import "./styles/chat.css";
+import "./styles/admin.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

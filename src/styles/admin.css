@@ -1,0 +1,232 @@
+/* ---------- Admin layout ---------- */
+.admin-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  padding: 48px 56px;
+  min-height: 60vh;
+}
+
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.admin-tabs button {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+
+.admin-tabs button:hover {
+  border-color: var(--accent);
+}
+
+.admin-tab-active {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--text-dark);
+}
+
+.admin-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-top: 8px;
+}
+
+/* ---------- Admin form ---------- */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--bg-light-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.admin-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.admin-form input,
+.admin-form textarea {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.25s var(--ease);
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.admin-form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* ---------- Admin table ---------- */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-dark-muted);
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--border);
+}
+
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.admin-table-subtext {
+  font-size: 12px;
+  color: var(--text-dark-muted);
+  margin-top: 2px;
+}
+
+.admin-table-actions {
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.admin-table-actions button {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+
+.admin-table-actions button:hover {
+  background: var(--text-dark);
+  border-color: var(--text-dark);
+  color: var(--text-light);
+}
+
+/* ---------- Status dropdowns ---------- */
+.admin-status {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-status-pending { background: #fdf0d5; color: #9a6b00; }
+.admin-status-confirmed { background: #dcf5e0; color: #1e7a34; }
+.admin-status-cancelled { background: #fbdede; color: #a12727; }
+.admin-status-unpaid { background: #fbdede; color: #a12727; }
+.admin-status-paid { background: #dcf5e0; color: #1e7a34; }
+
+/* ---------- Messages list ---------- */
+.admin-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-message-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.admin-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.admin-message-name {
+  font-weight: 700;
+  margin: 0;
+}
+
+.admin-message-email {
+  font-size: 13px;
+  color: var(--text-dark-muted);
+  margin: 2px 0 0;
+}
+
+.admin-message-date {
+  font-size: 12px;
+  color: var(--text-dark-muted);
+}
+
+.admin-message-body {
+  margin-bottom: 12px;
+}
+
+.admin-message-card button {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+
+.admin-message-card button:hover {
+  background: var(--text-dark);
+  border-color: var(--text-dark);
+  color: var(--text-light);
+}
+
+@media (max-width: 900px) {
+  .admin-form-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

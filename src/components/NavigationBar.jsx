@@ -25,6 +25,8 @@ export default function NavigationBar() {
           <Link to="/gallery">Gallery</Link>
           <Link to="/booking">Book</Link>
           <Link to="/contact">Contact</Link>
+          <Link to="/admin">Admin</Link>
+          
         </nav>
 
         <div className="nav-auth">
