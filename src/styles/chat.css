@@ -51,8 +51,8 @@
 
 /* ---------- Chat panel ---------- */
 .chat-panel {
-  width: 340px;
-  max-height: 480px;
+  width: 383px; 
+  height: min(630px, calc(90vh - 108px)); 
   background: var(--bg-light);
   border-radius: var(--radius);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
