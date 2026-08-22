@@ -1,0 +1,40 @@
+[
+  {
+    "id": "kids-judo",
+    "title": "Kids Judo",
+    "category": "program",
+    "keywords": [
+      "kids",
+      "children",
+      "child",
+      "judo",
+      "junior",
+      "young"
+    ],
+    "content": "WRJA offers Kids Judo programmes for children."
+  },
+  {
+    "id": "adult-judo",
+    "title": "Adult Judo",
+    "category": "program",
+    "keywords": [
+      "adult",
+      "adults",
+      "judo",
+      "training"
+    ],
+    "content": "WRJA offers Adult Judo programmes."
+  },
+  {
+    "id": "womens-judo",
+    "title": "Women's Judo",
+    "category": "program",
+    "keywords": [
+      "women",
+      "womens",
+      "female",
+      "judo"
+    ],
+    "content": "WRJA offers Women's Judo programmes."
+  }
+]

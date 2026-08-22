@@ -1,0 +1,12 @@
+[
+  {
+    "id": "club-example",
+    "title": "Example Judo Club",
+    "category": "club",
+    "keywords": [
+      "club",
+      "judo"
+    ],
+    "content": "Example information about the club."
+  }
+]
