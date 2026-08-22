@@ -59,94 +59,18 @@ RULES:
 Answer the user's question naturally.
 `;
 
-export async function generateWRJAResponse(
-  userMessage
-) {
+export async function generateWRJAResponse(userMessage) {
+  const response = await ai.models.generateContent({
+    model: "gemini-3.7-flash",
 
+    contents: userMessage,
 
-  // Search the WRJA knowledge base
-
-
-  const results = searchKnowledgeBase(
-    userMessage,
-    5
-  );
-
-  //Convert search results into context
-
-  let knowledgeContext;
-
-  if (results.length === 0) {
-
-    knowledgeContext =
-      "No relevant WRJA information was found.";
-
-  } else {
-
-    knowledgeContext = results
-      .map((document) => {
-        return `
-WRJA KNOWLEDGE DOCUMENT
-
-ID: ${document.id || "unknown"}
-
-Title: ${document.title || "Untitled"}
-
-Category: ${document.category || "unknown"}
-
-Content:
-${document.content || ""}
-`;
-      })
-      .join("\n-------------------------\n");
-  }
-
-  // Create the prompt
-
-
-  const prompt = `
-WRJA KNOWLEDGE:
-
-${knowledgeContext}
-
--------------------------
-
-USER QUESTION:
-
-${userMessage}
-
--------------------------
-
-Answer the user's question using the WRJA
-knowledge provided above.
-
-If the answer cannot be found in the knowledge,
-say that you do not currently have that information.
-`;
-
-
-  // Send request to Gemini
-
-
-  const response =
-    await ai.models.generateContent({
-      model: MODEL,
-
-      contents: prompt,
-
-      config: {
-        systemInstruction:
-          SYSTEM_INSTRUCTION,
-
-        temperature: 0.2,
-
-        maxOutputTokens: 500
-      }
-    });
-
-
-  // Return Gemini's response
-
+    config: {
+      systemInstruction: SYSTEM_INSTRUCTION,
+      temperature: 0.2,
+      maxOutputTokens: 500,
+    },
+  });
 
   return response.text;
 }

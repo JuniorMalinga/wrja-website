@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+
 import { generateWRJAResponse } from "./ai.js";
 
 dotenv.config();
@@ -57,9 +58,7 @@ app.post("/api/chat", async (req, res) => {
   }
 });
 
-
 // Start server
-
 
 app.listen(PORT, () => {
   console.log(
