@@ -1,0 +1,16 @@
+[
+  {
+    "id": "instructor-1",
+    "title": "Head Instructor",
+    "category": "instructor",
+    "keywords": ["instructor", "coach", "teacher"],
+    "content": "WRJA has experienced and certified judo instructors."
+  },
+  {
+    "id": "instructor-2",
+    "title": "Junior Coach",
+    "category": "instructor",
+    "keywords": ["junior", "kids", "coach"],
+    "content": "WRJA offers specialized coaching for junior judokas."
+  }
+]

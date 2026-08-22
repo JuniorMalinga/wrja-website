@@ -3,13 +3,21 @@
     "id": "what-is-wrja",
     "title": "What is WRJA?",
     "category": "faq",
-    "keywords": [
-      "wrja",
-      "association",
-      "west",
-      "rand",
-      "judo"
-    ],
-    "content": "WRJA stands for West Rand Judo Association."
+    "keywords": ["wrja", "association", "west", "rand", "judo"],
+    "content": "WRJA stands for West Rand Judo Association. We are a non-profit organization dedicated to promoting judo in the West Rand area."
+  },
+  {
+    "id": "what-is-judo",
+    "title": "What is Judo?",
+    "category": "faq",
+    "keywords": ["judo", "martial art", "sport", "Olympic", "Japanese"],
+    "content": "Judo is a Japanese martial art and Olympic sport that was created in 1882 by Jigoro Kano. It emphasizes throws, pins, joint locks, and chokes. The word 'judo' means 'gentle way' in Japanese. Judo is practiced worldwide and became an Olympic sport in 1964."
+  },
+  {
+    "id": "wrja-judo-programs",
+    "title": "WRJA Judo Programs",
+    "category": "program",
+    "keywords": ["programs", "training", "classes", "schedule"],
+    "content": "WRJA offers Judo programs for all ages including Kids Judo (ages 6-12), Adult Judo (ages 13+), and Women's Judo. Training takes place at our dojo in Randburg."
   }
 ]

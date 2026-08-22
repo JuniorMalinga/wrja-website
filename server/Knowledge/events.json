@@ -1,0 +1,16 @@
+[
+  {
+    "id": "event-1",
+    "title": "WRJA Tournament",
+    "category": "event",
+    "keywords": ["tournament", "competition", "event"],
+    "content": "WRJA hosts regular judo tournaments and events throughout the year."
+  },
+  {
+    "id": "event-2",
+    "title": "Training Camp",
+    "category": "event",
+    "keywords": ["camp", "training", "workshop"],
+    "content": "WRJA organizes training camps for all skill levels."
+  }
+]
