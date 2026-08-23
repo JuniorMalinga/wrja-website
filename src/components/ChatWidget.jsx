@@ -48,8 +48,7 @@ export default function ChatWidget() {
     setIsTyping(true);
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/chat",
+      const response = await fetch("http://localhost:5000/api/chat",
         {
           method: "POST",
           headers: {
@@ -114,7 +113,7 @@ export default function ChatWidget() {
               </p>
 
               <p className="chat-panel-subtitle">
-                Usually replies right away
+                Welcome the newest Ai chatbot!!
               </p>
             </div>
 

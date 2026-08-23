@@ -1,16 +1,23 @@
 [
   {
-    "id": "instructor-1",
-    "title": "Head Instructor",
+    "id": "head-instructor",
+    "title": "Head Instructor - Sensei Michael van der Merwe",
     "category": "instructor",
-    "keywords": ["instructor", "coach", "teacher"],
-    "content": "WRJA has experienced and certified judo instructors."
+    "keywords": ["instructor", "coach", "teacher", "sensei", "head", "Michael"],
+    "content": "Sensei Michael van der Merwe is the Head Instructor at WRJA. He holds a 5th Dan black belt and has over 30 years of judo experience. Sensei Michael has represented South Africa at multiple international competitions and has been coaching for 20 years. He is passionate about developing judo talent in the West Rand."
   },
   {
-    "id": "instructor-2",
-    "title": "Junior Coach",
+    "id": "assistant-instructor",
+    "title": "Assistant Instructor - Sensei Sarah Naidoo",
     "category": "instructor",
-    "keywords": ["junior", "kids", "coach"],
-    "content": "WRJA offers specialized coaching for junior judokas."
+    "keywords": ["instructor", "coach", "teacher", "sensei", "assistant", "Sarah"],
+    "content": "Sensei Sarah Naidoo is the Assistant Instructor at WRJA. She holds a 3rd Dan black belt and has been training in judo for 18 years. Sensei Sarah specializes in women's judo and children's programs. She is a certified coaching instructor and has trained several provincial champions."
+  },
+  {
+    "id": "junior-coach",
+    "title": "Junior Coach - Sensei Thabo Moloi",
+    "category": "instructor",
+    "keywords": ["coach", "junior", "kids", "children", "Thabo", "young"],
+    "content": "Sensei Thabo Moloi is the Junior Coach at WRJA. He holds a 2nd Dan black belt and has 12 years of judo experience. Sensei Thabo specializes in teaching children and beginners. He is known for his patient, fun, and encouraging coaching style that helps young judokas develop their skills."
   }
 ]

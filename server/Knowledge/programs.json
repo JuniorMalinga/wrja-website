@@ -1,40 +1,65 @@
 [
   {
     "id": "kids-judo",
-    "title": "Kids Judo",
+    "title": "Kids Judo Program",
     "category": "program",
-    "keywords": [
-      "kids",
-      "children",
-      "child",
-      "judo",
-      "junior",
-      "young"
-    ],
-    "content": "WRJA offers Kids Judo programmes for children."
+    "keywords": ["kids", "children", "child", "judo", "junior", "young", "youth", "ages 6-12", "beginners", "wrja", "wjra"],
+    "content": "WRJA offers Kids Judo programmes for children aged 6-12 years. Training takes place on Tuesdays and Thursdays from 17:00-18:00 at our Randburg dojo (123 Judo Street). Cost is R200 per month. All skill levels welcome from beginners to advanced. Kids learn discipline, respect, confidence, and self-defense through fun judo activities."
   },
   {
     "id": "adult-judo",
-    "title": "Adult Judo",
+    "title": "Adult Judo Program",
     "category": "program",
-    "keywords": [
-      "adult",
-      "adults",
-      "judo",
-      "training"
-    ],
-    "content": "WRJA offers Adult Judo programmes."
+    "keywords": ["adult", "adults", "judo", "training", "senior", "ages 13+", "fitness", "self-defense", "wrja", "wjra"],
+    "content": "WRJA offers Adult Judo programmes for ages 13 and above. Training takes place on Mondays and Wednesdays from 19:00-20:30 at our Randburg dojo (123 Judo Street). Cost is R300 per month. Classes focus on technique, sparring, competition preparation, and physical fitness. Beginners are welcome."
   },
   {
     "id": "womens-judo",
-    "title": "Women's Judo",
+    "title": "Women's Judo Program",
     "category": "program",
-    "keywords": [
-      "women",
-      "womens",
-      "female",
-      "judo"
-    ],
-    "content": "WRJA offers Women's Judo programmes."
+    "keywords": ["women", "womens", "female", "judo", "ladies", "self-defense", "women-only", "wrja", "wjra"],
+    "content": "WRJA offers Women's Judo programmes on Fridays from 18:00-19:30 at our Randburg dojo (123 Judo Street). Cost is R250 per month. This is a supportive environment for women of all skill levels to learn judo, self-defense, and fitness in a comfortable setting."
+  },
+  {
+    "id": "competition-team",
+    "title": "Competition Team",
+    "category": "program",
+    "keywords": ["competition", "team", "tournament", "fighting", "sport", "championship", "wrja", "wjra"],
+    "content": "WRJA has a dedicated competition team for advanced students who wish to compete at provincial, national, and international levels. Training sessions are held on Saturdays from 09:00-11:00 at our Randburg dojo. Team members participate in tournaments throughout South Africa."
+  },
+  {
+    "id": "beginners-course",
+    "title": "Beginners Judo Course",
+    "category": "program",
+    "keywords": ["beginner", "new", "starting", "introduction", "first time", "learn judo", "wrja", "wjra"],
+    "content": "WRJA offers a 6-week Beginners Judo Course for newcomers with no experience. The course covers basic techniques, falls, throws, and pins. Cost is R500 for the full 6-week course. Classes are held on Saturdays from 11:00-12:00. All equipment is provided."
+  },
+  {
+    "id": "adult-judo",
+    "title": "Adult Judo Program",
+    "category": "program",
+    "keywords": ["adult", "adults", "judo", "training", "senior", "ages 13+", "fitness", "self-defense"],
+    "content": "WRJA offers Adult Judo programmes for ages 13 and above. Training takes place on Mondays and Wednesdays from 19:00-20:30 at our Randburg dojo (123 Judo Street). Cost is R300 per month. Classes focus on technique, sparring, competition preparation, and physical fitness. Beginners are welcome."
+  },
+  {
+    "id": "womens-judo",
+    "title": "Women's Judo Program",
+    "category": "program",
+    "keywords": ["women", "womens", "female", "judo", "ladies", "self-defense", "women-only"],
+    "content": "WRJA offers Women's Judo programmes on Fridays from 18:00-19:30 at our Randburg dojo (123 Judo Street). Cost is R250 per month. This is a supportive environment for women of all skill levels to learn judo, self-defense, and fitness in a comfortable setting."
+  },
+  {
+    "id": "competition-team",
+    "title": "Competition Team",
+    "category": "program",
+    "keywords": ["competition", "team", "tournament", "fighting", "sport", "championship"],
+    "content": "WRJA has a dedicated competition team for advanced students who wish to compete at provincial, national, and international levels. Training sessions are held on Saturdays from 09:00-11:00 at our Randburg dojo. Team members participate in tournaments throughout South Africa."
+  },
+  {
+    "id": "beginners-course",
+    "title": "Beginners Judo Course",
+    "category": "program",
+    "keywords": ["beginner", "new", "starting", "introduction", "first time", "learn judo"],
+    "content": "WRJA offers a 6-week Beginners Judo Course for newcomers with no experience. The course covers basic techniques, falls, throws, and pins. Cost is R500 for the full 6-week course. Classes are held on Saturdays from 11:00-12:00. All equipment is provided."
   }
 ]
