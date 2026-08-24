@@ -13,7 +13,7 @@ export default function ChatWidget() {
     {
       id: 1,
       from: "bot",
-      text: "Hi! I'm the WRJA assistant. Ask me about programs, booking, or where to find us.",
+      text: "Hi! I'm the WRJA assistant chatbot. Ask me about programs, booking, or where to find us.",
     },
   ]);
 
@@ -84,7 +84,7 @@ export default function ChatWidget() {
       const errorMessage = {
         id: Date.now() + 1,
         from: "bot",
-        text: "Sorry, I'm having trouble connecting right now. Please try again or use the WRJA Contact page.",
+        text: "Sorry, I'm having trouble connecting right now. Please try again or use the WRJA Contact page. Or in worst cases, you have used up 20 inputs and we can no longer assist you until tomorrow. Come back again",
       };
 
       setMessages((current) => [
