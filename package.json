@@ -4,9 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "server": "node server/server.js",
-    "start": "concurrently \"npm run server\" \"npm run dev\"",
+    "dev": "concurrently -n VITE,SERVER -c blue,green \"vite\" \"npm --prefix server run dev\"",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -9,7 +9,7 @@ import { dirname, join } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-dotenv.config();
+dotenv.config({ path: ".env.local" });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 console.log("\nInitializing Gemini AI...");
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ 
-  model: "gemini-3.6-flash"
+  model: "gemini-3.5-flash"
 });
 console.log("Gemini AI initialized");
 
