@@ -1,8 +1,37 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
 import AuthCard from "../components/AuthCard";
+import { supabase } from "../lib/supabaseClient";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setErrorMessage("");
+    setIsSubmitting(true);
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    setIsSubmitting(false);
+
+    if (error) {
+      setErrorMessage(error.message);
+      return;
+    }
+
+    navigate("/");
+  };
+
   return (
     <div className="login-page">
       <PageHeader title="Login" />
@@ -16,17 +45,33 @@ export default function LoginPage() {
           </p>
         }
       >
-        {/* Non-functional for now — this will call Firebase Auth's
-            signInWithEmailAndPassword() once the auth flow is wired up. */}
-        <form className="auth-form" onSubmit={(event) => event.preventDefault()}>
+        {location.state?.justSignedUp && (
+          <p className="auth-success">
+            Account created! Check your email to confirm, then log in below.
+          </p>
+        )}
+
+        <form className="auth-form" onSubmit={handleSubmit}>
           <label>
             Email address
-            <input type="email" placeholder="you@example.com" required />
+            <input
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="you@example.com"
+              required
+            />
           </label>
 
           <label>
             Password
-            <input type="password" placeholder="Your password" required />
+            <input
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              placeholder="Your password"
+              required
+            />
           </label>
 
           <div className="auth-form-row">
@@ -34,10 +79,23 @@ export default function LoginPage() {
               <input type="checkbox" />
               Remember me
             </label>
-            <a href="#" className="auth-forgot-link">Forgot password?</a>
+
+            <a href="#" className="auth-forgot-link">
+              Forgot password?
+            </a>
           </div>
 
-          <button type="submit" className="btn btn-accent btn-lg">Log in</button>
+          {errorMessage && (
+            <p className="auth-error">{errorMessage}</p>
+          )}
+
+          <button
+            type="submit"
+            className="btn btn-accent btn-lg"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Logging in..." : "Log in"}
+          </button>
         </form>
       </AuthCard>
     </div>
