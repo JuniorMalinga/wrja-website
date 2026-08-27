@@ -4,6 +4,8 @@ import AdminEventsPanel from "../components/AdminEventsPanel";
 import AdminNewsPanel from "../components/AdminNewsPanel";
 import AdminBookingsPanel from "../components/AdminBookingsPanel";
 import AdminContactsPanel from "../components/AdminContactsPanel";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const tabs = [
   { slug: "events", label: "Events", Component: AdminEventsPanel },
@@ -14,7 +16,10 @@ const tabs = [
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState("events");
+  const { isAdmin } = useAuth();
   const ActivePanel = tabs.find((tab) => tab.slug === activeTab).Component;
+
+  if (!isAdmin) return <Navigate to="/login" replace />;
 
   return (
     <div className="admin-page">

@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
 import AuthCard from "../components/AuthCard";
-import { supabase } from "../lib/supabaseClient";
+import { useAuth } from "../context/AuthContext";
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { signIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -17,19 +18,15 @@ export default function LoginPage() {
     setErrorMessage("");
     setIsSubmitting(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    setIsSubmitting(false);
-
-    if (error) {
+    try {
+      const session = signIn(email, password);
+      setIsSubmitting(false);
+      navigate(session.profile.role === "admin" ? "/admin" : "/");
+    } catch (error) {
+      setIsSubmitting(false);
       setErrorMessage(error.message);
       return;
     }
-
-    navigate("/");
   };
 
   return (

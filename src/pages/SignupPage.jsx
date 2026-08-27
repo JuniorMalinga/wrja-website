@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
 import AuthCard from "../components/AuthCard";
-import { supabase } from "../lib/supabaseClient";
+import { useAuth } from "../context/AuthContext";
 
 function calculateAge(dateOfBirth) {
   const dob = new Date(dateOfBirth);
@@ -32,6 +32,7 @@ export default function SignupPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const { signUp } = useAuth();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -58,30 +59,15 @@ export default function SignupPage() {
 
     setIsSubmitting(true);
 
-    // profile_role here is only ever "athlete" or "guardian" —
-    // the database trigger enforces this too, so this can't be
-    // tampered with into "administrator" even by a modified client request.
-    const { error: signUpError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          first_name: firstName,
-          last_name: lastName,
-          phone: phone || null,
-          profile_role: role,
-          date_of_birth: role === "athlete" ? dateOfBirth : null,
-        },
-      },
-    });
-
-    setIsSubmitting(false);
-
-    if (signUpError) {
-      setErrorMessage(signUpError.message);
+    try {
+      signUp({ firstName, lastName, email, phone: phone || null, dateOfBirth: role === "athlete" ? dateOfBirth : null, password, role });
+    } catch (error) {
+      setIsSubmitting(false);
+      setErrorMessage(error.message);
       return;
     }
 
+    setIsSubmitting(false);
     navigate("/login", { state: { justSignedUp: true } });
   };
 

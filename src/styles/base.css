@@ -235,6 +235,12 @@ section {
   gap: 12px;
 }
 
+.nav-welcome {
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -274,6 +280,17 @@ section {
     flex-direction: column;
     background: var(--bg-dark);
     padding: 24px;
+  }
+
+  .nav-auth-open {
+    display: flex;
+    position: absolute;
+    top: calc(100% + 168px);
+    left: 24px;
+    right: 24px;
+    justify-content: center;
+    padding: 0 24px 24px;
+    background: var(--bg-dark);
   }
 }
 

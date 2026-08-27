@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import programs from "../data/programs";
 import instructors from "../data/instructors";
 import trialbackground from "../assets/images/background/1125387-2500x1406-desktop-hd-combat-sports-background.jpg";
+import { useAuth } from "../context/AuthContext";
 
 const paymentMethods = ["EFT", "Cash at the dojo", "Card"];
 
 export default function BookingPage() {
+  const { user } = useAuth();
   const [selectedProgramSlug, setSelectedProgramSlug] = useState("");
   const [activeInstructorIndex, setActiveInstructorIndex] = useState(0);
 
@@ -21,6 +24,8 @@ export default function BookingPage() {
     preferredDate: "",
     preferredTime: "",
   });
+
+  if (!user) return <Navigate to="/login" replace />;
 
   const selectedProgram = programs.find(
     (program) => program.slug === selectedProgramSlug

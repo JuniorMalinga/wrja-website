@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 import SiteFooter from "./components/SiteFooter";
 import ProgramDetailPage from "./pages/ProgramDetailPage";
@@ -23,17 +23,23 @@ import BackToTopButton from "./components/BackToTopButton";
 import NotFoundPage from "./pages/NotFoundPage";
 import FAQPage from "./pages/FAQPage";
 import InstructorDetailPage from "./pages/InstructorDetailPage"; 
+import { useAuth } from "./context/AuthContext";
+
+function AdminExperienceGuard({ children }) {
+  const { isAdmin } = useAuth();
+  const { pathname } = useLocation();
+  return isAdmin && pathname !== "/admin" ? <Navigate to="/admin" replace /> : children;
+}
 
 
-export default function App() {
+function AppContent() {
+  const { pathname } = useLocation();
+
   return (
-    // AuthProvider now wraps the entire application.
-    // This allows NavigationBar, pages, AdminPage, etc. to access
-    // authentication state through AuthContext.
-    <AuthProvider>
-      <BrowserRouter>
-        <NavigationBar />
-        <ScrollToTop />
+    <>
+      <NavigationBar />
+      <ScrollToTop />
+      <AdminExperienceGuard>
         <Routes>
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/" element={<HomePage />} />
@@ -55,10 +61,19 @@ export default function App() {
           <Route path="/instructors/:slug" element={<InstructorDetailPage />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
-        <ScrollToTop />
-        <SiteFooter />
-        <ChatWidget />
-        <BackToTopButton />
+      </AdminExperienceGuard>
+      {pathname !== "/admin" && <SiteFooter />}
+      <ChatWidget />
+      <BackToTopButton />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <AppContent />
       </BrowserRouter>
     </AuthProvider>
   );

@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import wrjaLogo from "../assets/images/Logo/wrja-logo.png";
 import instructors from "../data/instructors";
+import { useAuth } from "../context/AuthContext";
 
 export default function NavigationBar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user, displayName, isAdmin, signOut } = useAuth();
 
   return (
     <header className="navigation-bar">
@@ -16,9 +18,9 @@ export default function NavigationBar() {
         </Link>
 
         <nav className={`nav-links ${menuOpen ? "nav-links-open" : ""}`}>
-          <Link to="/">Home</Link>
+          {!isAdmin && <Link to="/">Home</Link>}
 
-          <div className="nav-dropdown">
+          {!isAdmin && <div className="nav-dropdown">
             <span className="nav-dropdown-trigger">Pages</span>
             <div className="nav-dropdown-menu">
               <Link to="/about">About</Link>
@@ -36,19 +38,28 @@ export default function NavigationBar() {
                 </div>
               </div>
             </div>
-          </div>
+          </div>}
 
-          <Link to="/events">Events</Link>
-          <Link to="/programs">Programs</Link>
-          <Link to="/news">News</Link>
-          <Link to="/book">Book</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/admin">Admin</Link>
+          {!isAdmin && <Link to="/events">Events</Link>}
+          {!isAdmin && <Link to="/programs">Programs</Link>}
+          {!isAdmin && <Link to="/news">News</Link>}
+          {user && !isAdmin && <Link to="/booking">Book</Link>}
+          {!isAdmin && <Link to="/contact">Contact</Link>}
+          {isAdmin && <Link to="/admin">Admin panel</Link>}
         </nav>
 
-        <div className="nav-auth">
-          <Link to="/login" className="btn btn-ghost">Login</Link>
-          <Link to="/signup" className="btn btn-accent">Sign up</Link>
+        <div className={`nav-auth ${menuOpen ? "nav-auth-open" : ""}`}>
+          {user ? (
+            <>
+              <span className="nav-welcome">Welcome, {displayName}</span>
+              <button type="button" className="btn btn-ghost" onClick={signOut}>Log out</button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn btn-ghost">Login</Link>
+              <Link to="/signup" className="btn btn-accent">Sign up</Link>
+            </>
+          )}
         </div>
 
         <button
