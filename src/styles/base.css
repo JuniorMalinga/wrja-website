@@ -211,6 +211,7 @@ section {
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 28px;
   flex: 1;
   justify-content: center;
@@ -427,4 +428,149 @@ section {
 
 .map-popup-links a:hover {
   color: var(--accent);
+} 
+
+/* ---------- Back to top button ---------- */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1500;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: var(--text-dark);
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  animation: backToTopIn 0.3s var(--ease);
+  transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.back-to-top:hover {
+  background: var(--accent-dark);
+  transform: translateY(-4px);
+}
+
+@keyframes backToTopIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 480px) {
+  .back-to-top {
+    bottom: 90px; /* clears the chat toggle on the opposite corner on small screens where they could visually crowd */
+    right: 16px;
+    width: 42px;
+    height: 42px;
+  }
+} 
+
+/* ---------- Pages dropdown + Instructors flyout ---------- */
+.nav-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown-trigger {
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 0.2s var(--ease);
+}
+
+.nav-dropdown:hover .nav-dropdown-trigger {
+  color: var(--accent);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+  z-index: 200;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-dropdown-menu a,
+.nav-dropdown-item {
+  display: block;
+  padding: 10px 20px;
+  color: var(--text-light);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.nav-dropdown-menu a:hover,
+.nav-dropdown-item:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.nav-has-flyout {
+  position: relative;
+}
+
+.nav-flyout-menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  min-width: 180px;
+  background: var(--bg-dark-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 0;
+  opacity: 0;
+  transform: translateX(-8px);
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.nav-has-flyout:hover .nav-flyout-menu {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.nav-flyout-menu a {
+  padding: 10px 20px;
+}
+
+@media (max-width: 900px) {
+  .nav-dropdown-menu,
+  .nav-flyout-menu {
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    border: none;
+    background: none;
+    display: none;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-has-flyout:hover .nav-flyout-menu {
+    display: block;
+  }
 }
