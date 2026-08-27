@@ -50,6 +50,34 @@ export function getLocalSession() {
   return storedSession ? JSON.parse(storedSession) : null;
 }
 
+export function getLocalUsers() {
+  return readUsers();
+}
+
+export function updateLocalUser(id, changes) {
+  const users = readUsers();
+  const index = users.findIndex((user) => user.id === id);
+  if (index === -1) throw new Error("User not found.");
+
+  const email = changes.email.trim().toLowerCase();
+  if (users.some((user) => user.id !== id && user.email === email)) {
+    throw new Error("An account with this email already exists.");
+  }
+
+  const updatedUser = { ...users[index], ...changes, email };
+  users[index] = updatedUser;
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  return updatedUser;
+}
+
+export function deleteLocalUser(id) {
+  const users = readUsers();
+  const user = users.find((candidate) => candidate.id === id);
+  if (!user) throw new Error("User not found.");
+  if (user.role === "admin") throw new Error("Administrators cannot be deleted.");
+  localStorage.setItem(USERS_KEY, JSON.stringify(users.filter((candidate) => candidate.id !== id)));
+}
+
 export function signUpLocal(userDetails) {
   const users = readUsers();
   const email = userDetails.email.trim().toLowerCase();

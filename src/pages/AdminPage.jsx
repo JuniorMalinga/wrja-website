@@ -4,6 +4,7 @@ import AdminEventsPanel from "../components/AdminEventsPanel";
 import AdminNewsPanel from "../components/AdminNewsPanel";
 import AdminBookingsPanel from "../components/AdminBookingsPanel";
 import AdminContactsPanel from "../components/AdminContactsPanel";
+import AdminUsersPanel from "../components/AdminUsersPanel";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -12,6 +13,7 @@ const tabs = [
   { slug: "news", label: "News", Component: AdminNewsPanel },
   { slug: "bookings", label: "Bookings & Payments", Component: AdminBookingsPanel },
   { slug: "messages", label: "Messages", Component: AdminContactsPanel },
+  { slug: "users", label: "Users", Component: AdminUsersPanel },
 ];
 
 export default function AdminPage() {
