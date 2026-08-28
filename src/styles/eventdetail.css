@@ -1,0 +1,215 @@
+/* ---------- Events page layout ---------- */
+.events-page-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ---------- Upcoming events sidebar ---------- */
+.upcoming-events h3 {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+
+.upcoming-events {
+  padding-top: 8px;
+}
+
+.upcoming-events-empty {
+  font-size: 13px;
+  color: var(--text-dark-muted);
+}
+
+.upcoming-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.upcoming-event-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.25s var(--ease);
+}
+
+.upcoming-event-card:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+.upcoming-event-date-badge {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius);
+  background: var(--bg-dark);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upcoming-event-day {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.upcoming-event-month {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+
+.upcoming-event-type {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  font-weight: 700;
+  margin: 0 0 2px;
+}
+
+.upcoming-event-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 2px;
+}
+
+.upcoming-event-location {
+  font-size: 12px;
+  color: var(--text-dark-muted);
+  margin: 0;
+}
+
+/* ---------- Event detail page ---------- */
+.event-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.event-detail-image-wrap img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.event-detail-type {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--text-dark);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.event-detail-meta {
+  font-size: 14px;
+  color: var(--text-dark-muted);
+  margin-bottom: 16px;
+}
+
+/* ---------- Apply section ---------- */
+.event-application-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--bg-light-2);
+  border-radius: var(--radius);
+  padding: 48px;
+}
+
+.event-application-options {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.event-application-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.event-qr-code {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px;
+}
+
+.event-application-none {
+  color: var(--text-dark-muted);
+  font-style: italic;
+}
+
+/* ---------- Enquiry section ---------- */
+.event-enquiry-section {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.event-enquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+  text-align: left;
+}
+
+.event-enquiry-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.event-enquiry-form input,
+.event-enquiry-form textarea {
+  padding: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-light-2);
+  border-radius: var(--radius);
+  font-family: inherit;
+  resize: vertical;
+}
+
+.event-enquiry-form button {
+  align-self: center;
+}
+
+@media (max-width: 900px) {
+  .events-page-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .event-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .event-enquiry-row {
+    grid-template-columns: 1fr;
+  }
+}

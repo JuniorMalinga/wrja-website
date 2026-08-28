@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import events from "../data/events";
 
 const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const monthNames = [
@@ -40,8 +42,21 @@ function buildMonthGrid(year, month) {
 export default function EventsCalendar() {
   const today = new Date();
   const [viewDate, setViewDate] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
+  const [selectedDay, setSelectedDay] = useState(null);
+  const navigate = useNavigate();
 
   const weeks = buildMonthGrid(viewDate.getFullYear(), viewDate.getMonth());
+  const eventsByDay = events.reduce((byDay, event) => {
+    const eventDate = new Date(`${event.date}T00:00:00`);
+    if (
+      eventDate.getFullYear() === viewDate.getFullYear() &&
+      eventDate.getMonth() === viewDate.getMonth()
+    ) {
+      const dayEvents = byDay[eventDate.getDate()] || [];
+      byDay[eventDate.getDate()] = [...dayEvents, event];
+    }
+    return byDay;
+  }, {});
 
   const isToday = (day, isCurrentMonth) =>
     isCurrentMonth &&
@@ -75,18 +90,55 @@ export default function EventsCalendar() {
           {weeks.map((week, weekIndex) => (
             <tr key={weekIndex}>
               {week.map((cell, cellIndex) => (
+                (() => {
+                  const dayEvents = cell.isCurrentMonth ? eventsByDay[cell.day] || [] : [];
+                  const dayKey = `${viewDate.getFullYear()}-${viewDate.getMonth()}-${cell.day}`;
+                  const hasEvents = dayEvents.length > 0;
+                  const handleDayClick = () => {
+                    if (dayEvents.length === 1) {
+                      navigate(`/events/${dayEvents[0].id}`);
+                    } else if (dayEvents.length > 1) {
+                      setSelectedDay((current) => (current === dayKey ? null : dayKey));
+                    }
+                  };
+
+                  return (
                 <td
                   key={cellIndex}
                   className={[
                     !cell.isCurrentMonth ? "calendar-day-muted" : "",
                     isToday(cell.day, cell.isCurrentMonth) ? "calendar-day-today" : "",
+                    hasEvents ? "calendar-day-has-events" : "",
                   ].join(" ").trim()}
                 >
                   {isToday(cell.day, cell.isCurrentMonth) && (
                     <span className="calendar-today-label">Today</span>
                   )}
-                  {cell.day}
+                  <button
+                    type="button"
+                    className="calendar-day-button"
+                    onClick={handleDayClick}
+                    disabled={!hasEvents}
+                    aria-label={hasEvents ? `View event${dayEvents.length > 1 ? "s" : ""} on day ${cell.day}` : undefined}
+                  >
+                    {cell.day}
+                    {hasEvents && (
+                      <span className={`calendar-event-dot ${dayEvents.length > 1 ? "calendar-event-dot-multiple" : ""}`} aria-hidden="true" />
+                    )}
+                  </button>
+                  {selectedDay === dayKey && dayEvents.length > 1 && (
+                    <div className="calendar-event-list">
+                      {dayEvents.map((event) => (
+                        <Link key={event.id} to={`/events/${event.id}`} className="calendar-event-link">
+                          <strong>{event.name}</strong>
+                          <span>{event.type}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </td>
+                  );
+                })()
               ))}
             </tr>
           ))}

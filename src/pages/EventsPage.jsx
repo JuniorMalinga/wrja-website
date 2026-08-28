@@ -1,12 +1,16 @@
 import PageHeader from "../components/PageHeader";
+import UpcomingEventsList from "../components/UpcomingEventsList";
 import EventsCalendar from "../components/EventsCalendar";
-import events from "../data/events";
 
 export default function EventsPage() {
   return (
     <div className="events-page">
       <PageHeader title="Events" />
-      <EventsCalendar />
+
+      <section className="events-page-layout">
+        <UpcomingEventsList />
+        <EventsCalendar />
+      </section>
     </div>
   );
 }

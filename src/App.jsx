@@ -23,6 +23,7 @@ import BackToTopButton from "./components/BackToTopButton";
 import NotFoundPage from "./pages/NotFoundPage";
 import FAQPage from "./pages/FAQPage";
 import InstructorDetailPage from "./pages/InstructorDetailPage"; 
+import EventDetailPage from "./pages/EventDetailPage";
 import { useAuth } from "./context/AuthContext";
 
 function AdminExperienceGuard({ children }) {
@@ -45,6 +46,7 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/events" element={<EventsPage />} />
+          <Route path="/events/:id" element={<EventDetailPage />} />
           <Route path="/programs" element={<ProgramsPage />} />
           <Route
             path="/programs/:slug"
