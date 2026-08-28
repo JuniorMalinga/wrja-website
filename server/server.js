@@ -9,7 +9,7 @@ import { dirname, join } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-dotenv.config({ path: ".env.local" });
+dotenv.config({ path: join(__dirname, ".env.local") });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -39,9 +39,14 @@ app.use((req, res, next) => {
 
 // Initialize Gemini AI
 console.log("\nInitializing Gemini AI...");
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const geminiApiKey = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
+if (!geminiApiKey) {
+  throw new Error("Missing GEMINI_API_KEY in server/.env.local.");
+}
+
+const genAI = new GoogleGenerativeAI(geminiApiKey);
 const model = genAI.getGenerativeModel({ 
-  model: "gemini-3.5-flash"
+  model: "gemini-3.6-flash"
 });
 console.log("Gemini AI initialized");
 
@@ -230,6 +235,9 @@ RULES:
     * or -, no numbered lists with periods. Use plain sentences
     and paragraphs, or start a new line for each item if listing
     things, with no special characters.
+
+11. You can access the internet if needed, depends on the complex nature of the question, 
+    but you must always prioritize the WRJA knowledge provided.
 
 Answer the user's question naturally.
 `;
