@@ -6,7 +6,7 @@ import NewsPost from "../components/NewsPost";
 import Pagination from "../components/Pagination";
 import newsPosts from "../data/newsPosts";
 
-const POSTS_PER_PAGE = 2;
+const POSTS_PER_PAGE = 4;
 
 export default function NewsPage() {
   const [currentPage, setCurrentPage] = useState(1);

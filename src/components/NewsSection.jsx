@@ -19,7 +19,7 @@ export default function NewsSection() {
               <img
                 src={item.image}
                 alt={item.title}
-                className="news-image"
+                className="news-card-image"
               />
 
               <p className="news-date">{item.date}</p>

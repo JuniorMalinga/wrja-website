@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
 
-// One card in the News list. Like/view/comment counts are decorative
-// placeholders for now — no backend wired up, so they don't actually
-// increment. hasVideo shows a play button over the image; wire it up to
-// a real video source once posts support video attachments.
+// One card in the News list. hasVideo shows a play button over the
+// image; wire it up to a real video source once posts support video
+// attachments.
 export default function NewsPost({ post }) {
   return (
     <Reveal className="news-post-card">
@@ -26,19 +25,11 @@ export default function NewsPost({ post }) {
 
       <p>{post.excerpt}</p>
 
-      <div className="news-post-footer">
-        <div className="news-post-reactions">
-          <span>&hearts; {post.likes}</span>
-          <span>&#128065; {post.views}</span>
-          <span>&#128172; {post.comments}</span>
-        </div>
-
-        {post.url && (
-          <a href={post.url} target="_blank" rel="noopener noreferrer" className="news-post-source-link">
-            Read on {post.source} &rarr;
-          </a>
-        )}
-      </div>
+      {post.url && (
+        <a href={post.url} target="_blank" rel="noopener noreferrer" className="news-post-source-link">
+          Read on {post.source} &rarr;
+        </a>
+      )}
     </Reveal>
   );
 }
