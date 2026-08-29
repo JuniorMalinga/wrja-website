@@ -188,6 +188,7 @@ section {
   justify-content: space-between;
   padding: 14px 40px;
   gap: 24px;
+  position: relative;
 }
 
 .nav-logo {
@@ -591,3 +592,95 @@ section {
     display: block;
   }
 }
+
+/* ---------- Post-login welcome journey animation ---------- */
+.nav-login-welcome {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--text-light);
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 300;
+  animation: navWelcomeJourney 3.8s var(--ease) forwards;
+}
+
+@keyframes navWelcomeJourney {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -70%) scale(0.85);
+  }
+  13% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    /* the "wrong place" dwell — long enough to register, not long
+       enough to feel like a bug */
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  52% {
+    /* a tiny anticipation flinch before the dash, like a judoka
+       shifting weight before a throw */
+    transform: translate(-50%, -50%) scale(0.96) rotate(-2deg);
+  }
+  79% {
+    opacity: 1;
+    transform: translate(calc(-50% + 38vw), -50%) scale(0.88) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + 42vw), -50%) scale(0.7);
+  }
+}
+
+/* The real, permanent welcome message + logout button stay invisible
+   at their normal opacity until the traveling message is about to
+   "arrive" — then they pop in as if it landed right there. */
+.nav-auth-login-transition .nav-welcome {
+  animation: navWelcomeArrive 0.45s var(--ease) both;
+  animation-delay: 3.05s;
+}
+
+.nav-auth-login-transition .btn-ghost {
+  animation: navWelcomeArrive 0.45s var(--ease) both;
+  animation-delay: 3.3s;
+}
+
+@keyframes navWelcomeArrive {
+  from {
+    opacity: 0;
+    transform: translateX(14px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Nav links stagger in one at a time while the welcome message is
+   mid-flight, so the whole navbar feels like it's assembling itself
+   rather than just appearing. */
+.nav-links-login-transition > * {
+  opacity: 0;
+  transform: translateY(-14px) scale(0.92);
+  animation: navLinkDropIn 0.5s var(--ease) forwards;
+}
+
+@keyframes navLinkDropIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.nav-links-login-transition > *:nth-child(1) { animation-delay: 1.9s; }
+.nav-links-login-transition > *:nth-child(2) { animation-delay: 2.1s; }
+.nav-links-login-transition > *:nth-child(3) { animation-delay: 2.3s; }
+.nav-links-login-transition > *:nth-child(4) { animation-delay: 2.5s; }
+.nav-links-login-transition > *:nth-child(5) { animation-delay: 2.7s; }
+.nav-links-login-transition > *:nth-child(6) { animation-delay: 2.9s; }
+.nav-links-login-transition > *:nth-child(n+7) { animation-delay: 3.1s; }

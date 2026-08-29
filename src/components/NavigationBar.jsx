@@ -1,12 +1,25 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import wrjaLogo from "../assets/images/Logo/wrja-logo.png";
 import instructors from "../data/instructors";
 import { useAuth } from "../context/AuthContext";
 
+// Total time the "Welcome, {name}" message spends center-stage before
+// settling in beside the logout button — must match the CSS animation
+// durations below (navWelcomeJourney runs for this long).
+const LOGIN_TRANSITION_DURATION = 3800;
+
 export default function NavigationBar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { user, displayName, isAdmin, signOut } = useAuth();
+  const { user, displayName, isAdmin, signOut, loginTransitionId } = useAuth();
+  const [showLoginWelcome, setShowLoginWelcome] = useState(false);
+
+  useEffect(() => {
+    if (!loginTransitionId) return undefined;
+    setShowLoginWelcome(true);
+    const timer = window.setTimeout(() => setShowLoginWelcome(false), LOGIN_TRANSITION_DURATION);
+    return () => window.clearTimeout(timer);
+  }, [loginTransitionId]);
 
   return (
     <header className="navigation-bar">
@@ -17,7 +30,7 @@ export default function NavigationBar() {
           </span>
         </Link>
 
-        <nav className={`nav-links ${menuOpen ? "nav-links-open" : ""}`}>
+        <nav className={`nav-links ${menuOpen ? "nav-links-open" : ""} ${showLoginWelcome ? "nav-links-login-transition" : ""}`}>
           {!isAdmin && <Link to="/">Home</Link>}
 
           {!isAdmin && <div className="nav-dropdown">
@@ -40,7 +53,8 @@ export default function NavigationBar() {
             </div>
           </div>}
 
-          {!isAdmin && <Link to="/events">Events</Link>}
+          {/* Events is now gated behind login, same as Book. */}
+          {user && !isAdmin && <Link to="/events">Events</Link>}
           {!isAdmin && <Link to="/programs">Programs</Link>}
           {!isAdmin && <Link to="/news">News</Link>}
           {user && !isAdmin && <Link to="/booking">Book</Link>}
@@ -48,7 +62,13 @@ export default function NavigationBar() {
           {isAdmin && <Link to="/admin">Admin panel</Link>}
         </nav>
 
-        <div className={`nav-auth ${menuOpen ? "nav-auth-open" : ""}`}>
+        {showLoginWelcome && (
+          <div className="nav-login-welcome" aria-live="polite">
+            Welcome, {displayName}
+          </div>
+        )}
+
+        <div className={`nav-auth ${menuOpen ? "nav-auth-open" : ""} ${showLoginWelcome ? "nav-auth-login-transition" : ""}`}>
           {user ? (
             <>
               <span className="nav-welcome">Welcome, {displayName}</span>

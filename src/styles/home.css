@@ -554,3 +554,36 @@
     grid-column: 1;
   }
 }
+
+
+/* ---------- Post-login entrance: overrides the normal scroll-reveal
+   for a more dramatic one-time "landing" on the sections already
+   visible when you arrive fresh from logging in. Sections further
+   down the page that aren't in view yet still use the normal
+   scroll-triggered Reveal behavior unchanged. ---------- */
+.home-page-login-entrance > .reveal {
+  animation: judoLandingIn 0.7s var(--ease) both;
+}
+
+.home-page-login-entrance > *:nth-child(1) { animation-delay: 0s; }
+.home-page-login-entrance > *:nth-child(2) { animation-delay: 0.15s; }
+.home-page-login-entrance > *:nth-child(3) { animation-delay: 0.3s; }
+.home-page-login-entrance > *:nth-child(4) { animation-delay: 0.45s; }
+.home-page-login-entrance > *:nth-child(5) { animation-delay: 0.6s; }
+.home-page-login-entrance > *:nth-child(n+6) { animation-delay: 0.75s; }
+
+@keyframes judoLandingIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.96) rotate(-1deg);
+  }
+  60% {
+    /* the "landing with control" overshoot */
+    opacity: 1;
+    transform: translateY(-6px) scale(1.01) rotate(0.3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}

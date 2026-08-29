@@ -6,6 +6,7 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(() => getLocalSession());
   const [users, setUsers] = useState(() => getLocalUsers());
+  const [loginTransitionId, setLoginTransitionId] = useState(0);
 
   useEffect(() => {
     const handleStorage = () => {
@@ -25,6 +26,7 @@ export function AuthProvider({ children }) {
       displayName: profile?.firstName || session?.user?.user_metadata?.full_name?.split(" ")[0] || "there",
       loading: false,
       isAdmin: profile?.role === "admin",
+      loginTransitionId,
       users,
       updateUser: (id, changes) => {
         const updatedUser = updateLocalUser(id, changes);
@@ -43,6 +45,7 @@ export function AuthProvider({ children }) {
       signIn: (email, password) => {
         const nextSession = signInLocal(email, password);
         setSession(nextSession);
+        setLoginTransitionId((current) => current + 1);
         return nextSession;
       },
       signUp: (userDetails) => signUpLocal(userDetails),
@@ -55,7 +58,7 @@ export function AuthProvider({ children }) {
         setSession(null);
       },
     };
-  }, [session]);
+  }, [loginTransitionId, session, users]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
