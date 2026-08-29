@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"; 
 
-import judo1 from "../assets/images/Landing/Landing 1.jpg";
-import judo2 from "../assets/images/Landing/Landing 2.jpg";
-import judo3 from "../assets/images/Landing/Landing 3.jpg";
+import judo1 from "../assets/images/Landing/Home Cover 1.jpg";
+import judo2 from "../assets/images/Landing/Home Cover 2.jpg";
+import judo3 from "../assets/images/Landing/Home Cover 3.jpg";
 
 const slides = [
   { image: judo1, number: "1" },

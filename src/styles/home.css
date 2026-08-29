@@ -213,13 +213,26 @@
   font-size: 14px;
 }
 
-.feature-icon-placeholder {
-  width: 40px;
-  height: 40px;
+/* CHANGE: The gold box around each icon */
+.feature-icon {
+  width: 50px;
+  height: 50px;
   border-radius: 8px;
   background: rgba(201, 162, 39, 0.15);
   border: 1px solid var(--accent);
   margin-bottom: 16px;
+
+  /* CHANGE: Centers the 64x64 PNG inside the 50x50 box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CHANGE: Scales the 64x64 PNG down to 26x26 */
+.feature-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
 }
 
 /* ---------- Trainers / instructors grid ---------- */
