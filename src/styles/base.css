@@ -125,6 +125,24 @@ section {
 .btn-ghost:hover {
   color: var(--accent);
 }
+/* ---------- Logout button ---------- */
+
+/* Only the logout button gets the logged-in styling */
+.nav-auth .btn-ghost {
+  border-color: rgba(201, 162, 39, 0.35);
+  background: rgba(201, 162, 39, 0.06);
+}
+
+/* Gold glow when hovering over Logout */
+.nav-auth .btn-ghost:hover {
+  color: var(--accent);
+  background: rgba(201, 162, 39, 0.12);
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 8px rgba(201, 162, 39, 0.35),
+    0 0 18px rgba(201, 162, 39, 0.18);
+}
 
 /* ---------- Scroll reveal animation ---------- */
 .reveal {
@@ -183,7 +201,6 @@ section {
 /* ---------- Navigation bar ---------- */
 
 /*
- * CHANGE:
  * The navbar remains sticky on normal pages.
  * On the homepage it becomes fixed so it can sit
  * directly over the hero image.
@@ -196,7 +213,6 @@ section {
   border-bottom: 1px solid var(--border);
 
   /*
-   * CHANGE:
    * Smooth transition between transparent and dark states.
    */
   transition:
@@ -206,8 +222,7 @@ section {
 }
 
 /*
- * CHANGE:
- * Homepage navbar sits directly over the hero.
+ * Homepage navbar sits directly over the homepageslider.
  */
 .navigation-bar.home-navigation {
   position: fixed;
@@ -216,20 +231,17 @@ section {
   width: 100%;
 
   /*
-   * CHANGE:
    * Transparent at the top of the homepage.
    */
   background: transparent;
 
   /*
-   * CHANGE:
    * Remove the visible border while transparent.
    */
   border-bottom-color: transparent;
 }
 
 /*
- * CHANGE:
  * Once the user scrolls, the homepage navbar
  * becomes the same dark navbar used throughout
  * the rest of the website.
@@ -242,7 +254,6 @@ section {
 }
 
 /*
- * CHANGE:
  * Slight blur when the navbar becomes dark.
  */
 .navigation-bar.home-navigation.navbar-scrolled {

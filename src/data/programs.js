@@ -3,7 +3,7 @@
 // content and adding a new program only means adding one entry here.
 
 import kidsJudo from "../assets/images/Kids/image 91.jpg";
-import adultJudo from "../assets/images/Adult/Buff Guy.jpg";
+import adultJudo from "../assets/images/Adult/1118290-3000x1688-desktop-hd-judo-background.jpg";
 import womensJudo from "../assets/images/Women/image 1.jpg";
 
 const programs = [

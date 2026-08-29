@@ -11,7 +11,7 @@ const LOGIN_TRANSITION_DURATION = 3800;
 export default function NavigationBar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // CHANGE: Track whether the user has scrolled down the page.
+  // Track whether the user has scrolled down the page.
   const [isScrolled, setIsScrolled] = useState(false);
 
   const location = useLocation();
@@ -26,11 +26,11 @@ export default function NavigationBar() {
 
   const [showLoginWelcome, setShowLoginWelcome] = useState(false);
 
-  // CHANGE: Determine whether we are currently on the homepage.
+  // Determine whether we are currently on the homepage.
   // The transparent/overlay navbar is only used on the homepage.
   const isHomePage = location.pathname === "/";
 
-  // CHANGE: Detect scrolling so the homepage navbar can change
+  // Detect scrolling so the homepage navbar can change
   // from transparent to the normal dark navbar.
   useEffect(() => {
     // If we are not on the homepage, the navbar should remain
@@ -41,7 +41,7 @@ export default function NavigationBar() {
     }
 
     const handleScroll = () => {
-      // CHANGE: Navbar becomes dark after scrolling 50px.
+      // Navbar becomes dark after scrolling 50px.
       setIsScrolled(window.scrollY > 50);
     };
 
@@ -73,7 +73,6 @@ export default function NavigationBar() {
 
   return (
     <header
-      // CHANGE:
       // home-navigation is added on the homepage.
       // navbar-scrolled is added after the user scrolls.
       className={`navigation-bar ${
