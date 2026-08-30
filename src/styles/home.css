@@ -196,80 +196,320 @@
   color: var(--text-dark-muted);
 }
 /* ---------- Features ---------- */
+
 .features {
-  /* Allows the background image to stay fixed while
-     the rest of the website content scrolls normally. */
+  --feature-glow: 201, 162, 39; /* matches --accent (#c9a227) as an RGB triplet, reused below */
+
+  position: relative;
+
   background-image:
     linear-gradient(
-      rgba(22, 22, 22, 0.78),
-      rgba(22, 22, 22, 0.78)
+      rgba(0, 0, 0, 0.72),
+      rgba(0, 0, 0, 0.72)
     ),
     url("../assets/images/background/features-background.jpg");
 
-  /* Makes the background image remain fixed to the viewport. */
-  background-attachment: fixed;
-
-  /* Makes the image cover the entire Features section. */
   background-size: cover;
-
-  /* Keeps the main part of the image centered. */
-  background-position: center center;
-
-  /* Prevents the image from repeating. */
+  background-position: center;
   background-repeat: no-repeat;
 
   color: var(--text-light);
   text-align: center;
+  padding: 90px 60px;
 }
 
-/* Keeps all Features content above the background image. */
-.features > * {
+/* True parallax (background-attachment: fixed) is broken on iOS Safari —
+   the background silently fails to render as fixed, and on some versions
+   causes a blank/black section instead. Scope it to devices that can
+   actually support it and skip it everywhere else rather than risk a
+   broken section on mobile. */
+@media (min-width: 901px) {
+  .features {
+    background-attachment: fixed;
+  }
+}
+
+.features-content {
   position: relative;
   z-index: 1;
 }
 
-.features-header p {
-  color: var(--text-muted);
+/* ---------- Features Header ---------- */
+
+.features-header {
+  margin-bottom: 58px;
 }
 
+.features-header h2 {
+  color: var(--text-light);
+  font-size: 38px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.features-header p {
+  color: var(--text-light);
+  font-size: 17px;
+  margin: 0;
+}
+
+/* ---------- Features Grid ---------- */
+
 .features-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-  margin-top: 48px;
+
+  gap: 0;
   text-align: left;
 }
 
-.feature-item h3 {
-  color: var(--text-light);
-  font-size: 18px;
+/* ---------- Individual Feature ---------- */
+
+.feature-item {
+  position: relative;
+  padding: 38px 40px 40px;
+  min-height: 230px;
+
+  border: 2px solid transparent;
+
+  transition:
+    border-color 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    background 0.25s var(--ease);
 }
 
-.feature-item p {
-  color: var(--text-muted);
-  font-size: 14px;
+/* Vertical separators (3-column layout) */
+.feature-item:not(:nth-child(3n + 1)) {
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-/* The gold box around each icon */
+/* Horizontal separator (3-column layout) */
+.feature-item:nth-child(n + 4) {
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+/* ---------- Feature Block Hover ---------- */
+
+/*
+ * Hovering anywhere over the feature block creates the thick gold
+ * outline and glow. The title's own color change is a separate,
+ * narrower rule below — this one never touches the title.
+ */
+.feature-item:hover {
+  border: 2px solid var(--accent);
+
+  background: rgba(var(--feature-glow), 0.06);
+
+  box-shadow:
+    0 0 10px rgba(var(--feature-glow), 0.65),
+    0 0 25px rgba(var(--feature-glow), 0.45),
+    0 0 45px rgba(var(--feature-glow), 0.2);
+
+  z-index: 5;
+}
+
+/* ---------- Feature Heading ---------- */
+
+.feature-heading {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+/* ---------- Feature Icon ---------- */
+
 .feature-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  background: rgba(201, 162, 39, 0.15);
-  border: 1px solid var(--accent);
-  margin-bottom: 16px;
+  width: 52px;
+  height: 52px;
 
-  /* Centers the 64x64 PNG inside the 50x50 box */
+  flex-shrink: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+
+  overflow: visible;
 }
 
-/* Scales the 64x64 PNG down to 26x26 */
 .feature-icon img {
-  width: 26px;
-  height: 26px;
+  width: 52px;
+  height: 52px;
+
   object-fit: contain;
+  display: block;
+}
+
+/*
+ * The icon flashes once when the feature block is hovered. No glow is
+ * applied to the icon — that stays on the block border only.
+ */
+.feature-item:hover .feature-icon img {
+  animation: featureIconFlash 0.45s ease-out 1;
+}
+
+@keyframes featureIconFlash {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  30% {
+    opacity: 0.35;
+    transform: scale(1.12);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Respect reduced-motion preferences — the scale/opacity flash is
+   purely decorative, so it's safe to just skip it entirely rather
+   than trying to offer a toned-down version. */
+@media (prefers-reduced-motion: reduce) {
+  .feature-item:hover .feature-icon img {
+    animation: none;
+  }
+
+  .feature-item {
+    transition: none;
+  }
+}
+
+/* ---------- Feature Title ---------- */
+
+.feature-item h3 {
+  color: var(--text-light);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.2;
+
+  /* The title itself is the hover target here, not the whole block. */
+  cursor: pointer;
+
+  transition:
+    color 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+/*
+ * ONLY hovering directly over the title highlights it — intentionally
+ * NOT `.feature-item:hover h3`, since that would highlight the title
+ * every time the whole block is hovered, not just when the title
+ * itself is the target.
+ */
+.feature-item h3:hover {
+  color: var(--accent);
+  background: rgba(var(--feature-glow), 0.12);
+}
+
+/* ---------- Feature Description ---------- */
+
+.feature-item p {
+  color: var(--text-light);
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 0;
+  max-width: 360px;
+}
+
+/* ---------- Responsive Features ---------- */
+
+@media (max-width: 900px) {
+  .features {
+    padding: 70px 30px;
+  }
+
+  .features-header h2 {
+    font-size: 32px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Reset the 3-column separators, then apply 2-column ones instead */
+  .feature-item:not(:nth-child(3n + 1)) {
+    border-left: none;
+  }
+
+  .feature-item:nth-child(even) {
+    border-left: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .feature-item:nth-child(n + 3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+}
+
+@media (max-width: 600px) {
+  .features {
+    padding: 60px 24px;
+  }
+
+  .features-header {
+    margin-bottom: 35px;
+  }
+
+  .features-header h2 {
+    font-size: 28px;
+  }
+
+  .features-header p {
+    font-size: 15px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single column: every item just stacks with a top border, no
+     left borders needed at all. */
+  .feature-item {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    padding: 30px 10px;
+    min-height: auto;
+  }
+
+  .feature-item:first-child {
+    border-top: none;
+  }
+
+  .feature-heading {
+    gap: 18px;
+  }
+
+  .feature-icon,
+  .feature-icon img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .feature-item h3 {
+    font-size: 18px;
+  }
+
+  .feature-item p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
 }
 
 /* ---------- Trainers / instructors grid ---------- */

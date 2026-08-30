@@ -1,12 +1,11 @@
 import Reveal from "./Reveal";
 
-// Import your 64x64 PNG icons
-import clockIcon from "../assets/images/icons/clock.png";
-import pencilIcon from "../assets/images/icons/pencil.png";
-import equipmentIcon from "../assets/images/icons/equipment.png";
-import nutritionIcon from "../assets/images/icons/nutrition.png";
-import coachIcon from "../assets/images/icons/coach.png";
-import trophyIcon from "../assets/images/icons/trophy.png";
+import clockIcon from "../assets/images/icons/clock.jpeg";
+import pencilIcon from "../assets/images/icons/pencil.jpeg";
+import equipmentIcon from "../assets/images/icons/equipment.jpeg";
+import nutritionIcon from "../assets/images/icons/nutrition.jpeg";
+import coachIcon from "../assets/images/icons/coach.jpeg";
+import trophyIcon from "../assets/images/icons/trophy.jpeg";
 
 const features = [
   {
@@ -49,33 +48,35 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    // features-background class allows the fixed background
-    // image effect to be controlled separately from the content.
-    <section className="features features-background">
-      <Reveal className="features-header">
-        <h2>
-          Our <span className="text-accent">features</span>
-        </h2>
+    <section className="features">
+      <div className="features-content">
+        <Reveal className="features-header">
+          <h2>
+            Our <span className="text-accent">features</span>
+          </h2>
 
-        <p>What you can expect training with WRJA</p>
-      </Reveal>
+          <p>What you can expect training with WRJA</p>
+        </Reveal>
 
-      <div className="features-grid">
-        {features.map((feature, index) => (
-          <Reveal
-            key={feature.title}
-            delay={index * 80}
-            className="feature-item"
-          >
-            <div className="feature-icon" aria-hidden="true">
-              <img src={feature.icon} alt="" />
-            </div>
+        <div className="features-grid">
+          {features.map((feature, index) => (
+            <Reveal
+              key={feature.title}
+              delay={index * 80}
+              className={`feature-item feature-item-${index + 1}`}
+            >
+              <div className="feature-heading">
+                <div className="feature-icon" aria-hidden="true">
+                  <img src={feature.icon} alt="" />
+                </div>
 
-            <h3>{feature.title}</h3>
+                <h3>{feature.title}</h3>
+              </div>
 
-            <p>{feature.description}</p>
-          </Reveal>
-        ))}
+              <p>{feature.description}</p>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
